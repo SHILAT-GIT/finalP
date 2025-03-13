@@ -1,0 +1,170 @@
+<html>
+<head>
+    <link rel="stylesheet" href="mainPage.css">
+    <link rel="stylesheet" href="upAndDoun.css">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<div class="header">
+<span id="logo"><a href="mainPage.html"><img src="logo.jpg"></a></span>
+<h1 id="titelMainPage">דירות ישראל</h1>
+<span id="buttonMainPageHeader"><button>הרשמה</button>
+<button>התחברות</button></span>
+</div>
+
+<ul>
+    <li><a href="mainPage.html">בית</a></li>
+    <li><a href="about.html">אודותנו</a></li>
+    <li class="dropdown">
+      <a href="apartments.html" class="dropbtn">דירות</a>
+      <div class="dropdown-content">
+        <a href="apartmentsForSale.html">דירות למכירה</a>
+        <a href="apartmentsForRent.html">דירות להשכרה</a>
+      </div>
+    </li>
+    <li><a href="newApartment.html">פרסם דירה +</a></li>
+    <li><a href="newApartment.html">השאר פניה +</a></li>
+    <li class="search-container" style="margin-top: 3.5px;">
+      <i class="fas fa-search search-icon"></i>
+      <input type="text" id="searchInput" placeholder="...חפש">
+    </li>
+    <li style="float: left;"><a href="personalArea.html"  id="iconPerson"><i class="fas fa-user"></i></a></li>
+</ul>
+<br/>
+<span id="textMainPage"><h1>!ברוכים הבאים לאתר הדירות המוביל בישראל</h1>
+<h3>.כאן, ב-דירות ישראל, תמצאו מגוון רחב של דירות למכירה ולהשכרה, עם שירות תיווך אמין ומותאם אישית</h3></span>
+<br/>
+<br/>
+
+<div class="grid-container">
+  <div class="grid-item">
+    <h3>לכל פניה ושאלה</h3>
+    <p>צוות המומחים שלנו זמין עבורכם לכל שאלה ופניה. ניתן ליצור קשר בטלפון: 03-1234567. וכן ניתן להשאיר <a href="comments.html">פניה באתר</a> </p>
+  </div>
+  <div class="grid-item" id="center-for-border">
+    <h3>השכרת דירה</h3>
+    <p>מעוניינים להשכיר את הדירה שלכם? אנו נדאג למצוא עבורכם שוכרים איכותיים, תוך סינון קפדני ומתן מענה לכל צרכיכם. נחסוך לכם זמן וטרחה, ונספק לכם שקט נפשי. <a href="newApartment.html">פרסם דירה להשכרה</a></p>
+  </div>
+  <div class="grid-item">
+    <h3>מכירת דירה</h3>
+    <p>מחפשים למכור את הדירה שלכם? אנו מציעים שירות מקצועי ואמין, עם ניסיון רב בשוק הנדל"ן. נלווה אתכם לאורך כל התהליך, החל משלב הערכת הנכס ועד לחתימת החוזה. <a href="newApartment.html">פרסם דירה למכירה</a></p>
+  </div>
+</div>
+<br/>
+
+<div class="search-apartments">
+ <span>
+   <h2>?מחפשים דירה</h2>
+   <span>.אצלנו תמצאו מגוון רחב של דירות למכירה ולהשכרה, עם שירות אישי וליווי צמוד לאורך כל הדרך</span><br/>
+   <span>.צפו במגוון הדירות שלנו באתר, ואנחנו כאן כדי לעזור לכם בכל שלב, עד למציאת הדירה המתאימה לכם</span><br/>
+   <span>!התחילו את החיפוש עוד היום</span><br/><br/>
+   <span><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+     <path d="M12 4V20M12 20L19 13M12 20L5 13" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+   </svg></span>
+ </span>
+</div>
+
+<br/>
+
+<h1 style="text-align: center; font-size: 2.5em;">.דירות למכירה/השכרה</h1>
+<br/>
+<div class="container">
+  <div class="slider-container slider-right">
+      <div class="slider slider2">
+          <div class="slide">
+              <img src="1.png" alt="דירות להשכרה">
+          </div>
+          <div class="slide">
+              <img src="2.png" alt="דירות להשכרה">
+          </div>
+          <div class="slide">
+              <img src="3.png" alt="דירות להשכרה">
+          </div>
+      </div>
+      <button class="prev-btn prev-btn2">&#10094;</button>
+      <button class="next-btn next-btn2">&#10095;</button>
+      <a href="apartmentsForRent.html" class="slide-link">דירות להשכרה</a>
+  </div>
+  <div class="slider-container slider-left">
+      <div class="slider slider1">
+          <div class="slide">
+              <img src="1.png" alt="דירות למכירה">
+          </div>
+          <div class="slide">
+              <img src="2.png" alt="דירות למכירה">
+          </div>
+          <div class="slide">
+              <img src="3.png" alt="דירות למכירה">
+          </div>
+      </div>
+      <button class="prev-btn prev-btn1">&#10094;</button>
+      <button class="next-btn next-btn1">&#10095;</button>
+      <a href="apartmentsForSale.html" class="slide-link">דירות למכירה</a>
+  </div>
+</div>
+<br/>
+<br/>
+<br/>
+
+<h1 style="text-align: center;">:תגובות לקוחות מרוצים</h1>
+<div class="testimonial">
+  <p>"חיפשתי דירה להשכרה באזור המרכז במשך חודשים, ולא מצאתי משהו שמתאים לי. הגעתי למשרד תיווך דירות ישראל, והם מיד הבינו מה אני מחפש. תוך שבוע מצאו לי דירה מקסימה, בדיוק כמו שרציתי. אני מאוד מרוצה מהשירות המקצועי והיחס האישי."</p>
+  <p class="author">- דנה</p>
+</div>
+  
+<div class="testimonial">
+  <p>"הייתי מאוד לחוץ לגבי מכירת הדירה שלי. לא ידעתי מאיפה להתחיל. פניתי למשרד תיווך דירות ישראל, והם עזרו לי בכל שלב בתהליך. הם דאגו לפרסום הדירה, קבעו פגישות עם קונים פוטנציאליים, וניהלו משא ומתן בשמי. בסופו של דבר, מכרתי את הדירה במחיר מצוין, ותוך זמן קצר."</p>
+  <p class="author">- יואב</p>
+</div>
+<div class="testimonial">
+  <p>"התהליך היה חלק ונעים, הרגשתי שאני בידיים טובות."</p>
+  <p class="author">- גל</p>
+</div>
+  
+<div class="testimonial">
+  <p>"הם עזרו לי למצוא את הדירה המושלמת, לא יכולתי לבקש יותר."</p>
+  <p class="author">- ליאת</p>
+</div>
+
+<div class="testimonial">
+  <p>"חיפשתי שוכרים לדירה שלי במשך זמן רב, ולא מצאתי אנשים מתאימים. פניתי למשרד תיווך דירות ישראל, והם מיד התחילו לעבוד. הם פרסמו את הדירה, קבעו פגישות עם שוכרים פוטנציאליים, וסיננו את המועמדים. בסופו של דבר, מצאו לי שוכרים נהדרים, ואני מאוד רגוע עכשיו."</p>
+  <p class="author">- איתי</p>
+</div>
+<br/>
+
+<span class="testimonial"><a href="comments.html" id="comments">...לכל התגובות</a></span>
+<br/>
+<br/>
+<br/>
+<br/>
+
+
+<footer>
+    <div class="footer-content">
+      <div class="contact-info">
+        <p><b>:פרטי יצירת קשר</b></p>
+        <p>כתובת: תל אביב, רחוב אלנבי 123</p>
+        <p>טלפון: 03-1234567</p>
+        <p>DirotIsrael@gmail.com :אימייל</p>
+      </div>
+      <div class="social-icons">
+        <p><b>:בקרו אותנו ברשתות החברתיות</b></p>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+  </footer>
+
+
+
+  <script src="kod.js"></script>
+</body>
+</html>

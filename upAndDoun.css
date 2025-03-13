@@ -1,0 +1,210 @@
+/*כותרת עליונה*/
+#buttonMainPageHeader{
+    position: absolute;
+    left: 20;
+}
+.header button{
+    background-color:white; /* צבע רקע */
+    border: none; /* הסרת גבול */
+    color: black; /* צבע טקסט */
+    padding: 8px 20px; /* ריווח פנימי */
+    text-align: center; /* יישור טקסט למרכז */
+    text-decoration: none; /* הסרת קו תחתון */
+    display: inline-block; /* הצגה כאלמנט בלוק-אינליין */
+    font-size: 16px; /* גודל גופן */
+    border-radius: 25px; /* עיגול פינות */
+    cursor: pointer; /* סמן עכבר */
+    transition: background-color 0.3s ease; /* מעבר חלק בצבע רקע */
+    margin-left: 5px;
+}
+.header button:hover {
+background-color: #2980b9; /* צבע רקע במעבר עכבר */
+}
+.header {
+    background-color: #e1f5fb;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    direction: rtl;
+}
+
+#logo img {
+    width: 80px;
+    height: 80px;
+    border-radius: 180%;
+}
+
+#logo {
+    margin-right: 10px;
+}
+
+#titelMainPage{
+    font-family: 'Arial', sans-serif; 
+    font-size: 2.5em;
+    margin-right: 10px;
+}
+/*עד כאן כותרת עליונה*/
+
+/*סרגל ניווט*/
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #38444d;
+  }
+  
+  li {
+    float: right;
+    font-family: 'Arial', sans-serif; 
+  }
+  
+  li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover, .dropdown:hover .dropbtn {
+    background-color: rgb(164, 210, 244);
+  }
+  
+  li.dropdown {
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 110px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    text-align: right;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+
+  /*חיפוש*/
+nav {
+    background-color: #f0f0f0;
+    padding: 10px 0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    margin: 0 15px;
+    font-size: 16px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 30%;
+    margin: 0 15px;
+}
+
+.search-container i {
+    padding: 10px;
+    color: #555;
+    cursor: pointer;
+    transition: color 0.3s ease; /* הוספת מעבר חלק */
+}
+
+.search-container i:hover {
+    color: rgb(164, 210, 244); /* צבע במעבר עכבר */
+}
+
+#searchInput {
+    padding: 10px;
+    border: none;
+    flex-grow: 1;
+    font-size: 16px;
+    text-align: right;
+}
+
+#searchInput:focus {
+    outline: none;
+}
+/*עד כאן חיפוש*/
+
+
+#iconPerson{
+    border-radius: 160%;
+    border: 1px solid white;
+    margin-left: 5px;
+    height: 2%;
+    margin-top: 2px;
+}
+/*עד כאן סרגל ניווט*/
+
+
+
+/*כותרת תחתונה*/
+footer {
+    background-color: #e6e5e5;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column; /* סידור אנכי */
+    align-items: center; /* מרכוז אופקי */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-info,
+.social-icons {
+    margin-bottom: 20px; /* מרווח בין החלקים */
+}
+
+.social-icons p,
+.contact-info p {
+    margin: 5px 0;
+    font-family: 'Arial', sans-serif; 
+}
+
+.social-icons a {
+    display: inline-block;
+    margin: 0 10px;
+    font-size: 24px;
+    color: #333;
+}
+
+.social-icons a:hover {
+    color: #007bff;
+}
+/*עד כאן כותרת תחתונה*/
+
+body{
+    background-color: rgb(253, 253, 253);
+}
