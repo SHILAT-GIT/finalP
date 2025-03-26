@@ -24,11 +24,11 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'client', 'mainPage.html'));
 });
 
+//  ייבוא הראוטרים
+const userRoutes = require('./routes/userRoutes');
 
-/*const usersRoutes = require("./routes/usersRoutes");
-const productsRoutes = require("./routes/productsRoutes");
-app.use("/users",usersRoutes);
-app.use("/products",productsRoutes);*/
+//  חיבור הראוטרים
+app.use('/api/users', userRoutes);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
