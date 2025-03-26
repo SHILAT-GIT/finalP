@@ -1,0 +1,111 @@
+/* navbar */
+.header {
+    height: 110 !important;
+}
+
+#titelMainPage {
+    font-size: 2.5rem !important;
+    font-weight: bold !important;
+}
+
+#iconPerson {
+    height: 47 !important;
+}
+/* end - navbar */
+
+.container {
+    direction: rtl;
+    width: 98% !important;
+    max-width: 900px !important;
+}
+
+.card-link {
+    text-decoration: none;
+}
+
+.custom-card {
+    position: relative;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.custom-card:hover {
+    transform: scale(1.05);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.card-content {
+    position: relative;
+    color: white;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.accordion-button::after {
+    margin-right: auto;
+    margin-left: 0 !important;
+}
+
+.btn {
+    border-radius: 10px;
+}
+
+#submitBtn {
+    color: white;
+    background-color: #38444d;
+    border-color: #38444d;
+}
+
+#submitBtn:hover {
+    background-color: #2c353e;
+    border-color: #2c353e;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #e1f5fb !important;
+    border-color: #e1f5fb !important;
+}
+
+.accordion-button:focus {
+    box-shadow: none !important;
+}
+
+.accordion-button:hover.collapsed {
+    box-shadow: 0 0 0 0.25rem #e1f5fb !important;
+}
+
+.message {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
