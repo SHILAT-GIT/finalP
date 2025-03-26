@@ -26,10 +26,12 @@ app.get('/', (req, res) => {
 
 //  ייבוא הראוטרים
 const userRoutes = require('./routes/userRoutes');
+const apartmentRoutes = require('./routes/apartmentRoutes');
 const inquiryRoutes = require('./routes/inquiryRoutes');
 
 //  חיבור הראוטרים
 app.use('/api/users', userRoutes);
+app.use('/api/apartments', apartmentRoutes);
 app.use('/api/inquiries', inquiryRoutes);
 
 const port = process.env.PORT || 3000;
