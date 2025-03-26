@@ -26,9 +26,11 @@ app.get('/', (req, res) => {
 
 //  ייבוא הראוטרים
 const userRoutes = require('./routes/userRoutes');
+const inquiryRoutes = require('./routes/inquiryRoutes');
 
 //  חיבור הראוטרים
 app.use('/api/users', userRoutes);
+app.use('/api/inquiries', inquiryRoutes);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

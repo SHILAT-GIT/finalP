@@ -2,6 +2,47 @@ const express = require('express');
 const router = express.Router();
 
 const User = require('../models/User');
+const Apartment = require('../models/Apartment');
+
+// Fetch all saved apartments of a user
+router.get('/saved-apartments/:id', async (req, res) => {
+    const userId = req.params.id;
+
+    try {
+        const user = await User.findById(userId).populate('savedApartments', '-owner -address.apartmentNumber');
+
+        if (!user || user.savedApartments.length === 0) {
+            return res.status(404).send({ message: 'No saved apartments found.' });
+        }
+
+        res.status(200).send({ message: 'Saved apartments retrieved successfully.', apartments: user.savedApartments });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ message: 'Server error. Please try again later.' });
+    }
+});
+
+// Remove saved apartment from user's saved apartments list
+router.post('/remove-saved-apartment', async (req, res) => {
+    const { userId, apartmentId } = req.body;
+
+    try {
+        const user = await User.findByIdAndUpdate(
+            userId,
+            { $pull: { savedApartments: apartmentId } },
+            { new: true }
+        );
+
+        if (!user) {
+            return res.status(404).send({ message: 'User not found' });
+        }
+
+        res.status(200).send({ message: 'Apartment removed from apartments successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ message: 'Server error. Please try again later.' });
+    }
+});
 
 // Update user profile
 router.post('/update-profile', async (req, res) => {
