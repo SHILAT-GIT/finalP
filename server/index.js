@@ -15,13 +15,13 @@ const connectdb = require('./db');
 connectdb();
 
 // הגדרת נתיב לתיקיית הסטטיים
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '..', 'client')));
 
 const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: true }))
 // הגדרת נתיב לבית
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'mainPage.html'));
+  res.sendFile(path.join(__dirname, '..', 'client', 'mainPage.html'));
 });
 
 
