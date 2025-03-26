@@ -1,0 +1,61 @@
+/* navbar */
+.header {
+    height: 110 !important;
+}
+
+#titelMainPage {
+    font-size: 2.5rem !important;
+    font-weight: bold !important;
+}
+
+#iconPerson {
+    height: 47 !important;
+}
+
+/* end - navbar */
+
+.container {
+    direction: rtl;
+    width: 98% !important;
+    max-width: 900px !important;
+}
+
+.badge {
+    border-radius: 60px 30px;
+}
+
+.save-btn:hover {
+    border-radius: 10px;
+    background-color: #f0f0f0;
+}
+
+.contact-btn {
+    background-color: #38444d;
+    border-color: #38444d;
+}
+
+.contact-btn:hover {
+    background-color: #2c353e;
+    border-color: #2c353e;
+}
+
+@media (min-width: 992px) {
+    .contact-btn {
+        margin-right: 10px;
+    }
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.row .carousel-control-prev {
+    left: -30px;
+}
+
+.row .carousel-control-next {
+    right: -30px;
+}
