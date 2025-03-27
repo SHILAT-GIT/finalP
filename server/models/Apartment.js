@@ -3,8 +3,7 @@ const mongoose = require('mongoose');
 const apartmentSchema = new mongoose.Schema({
     owner: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     type: { type: String, required: true },
-    price: { type: Number, required: true },
-    address: { type: String, required: true },
+    price: { type: String, required: true },
     address: {
         apartmentNumber: { type: String, required: true },
         street: { type: String, required: true },
@@ -18,7 +17,7 @@ const apartmentSchema = new mongoose.Schema({
     apartmentDetails: {
         sizeInSquareMeters: { type: Number, required: true },
         numberOfRooms: { type: Number, required: true },
-        floor: { type: Number, required: true }
+        floor: { type: String, required: true }
     },
     description: String,
     images: [String],
@@ -30,3 +29,10 @@ const apartmentSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Apartment', apartmentSchema);
+
+
+
+
+
+    
+    

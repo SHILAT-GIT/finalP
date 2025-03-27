@@ -1,0 +1,251 @@
+[
+{
+    "owner": null,
+    "type": "דירה למכירה",
+    "price": "3,600,000",
+    "address": {
+        "apartmentNumber": null,
+        "street": "מגידו 13",
+        "city": "תל אביב יפו",
+        "region": "מרכז"
+    },
+    "apartmentDetails": {
+        "sizeInSquareMeters": 55,
+        "numberOfRooms": 3,
+        "floor": "קרקע"
+    },
+    "description": "באזור הכי חזק של תל אביב, צמוד לכיכר רבין ולרכבת הקלה (מחובר לכל המרכז) בנין איכותי באוהאוס ועצי פרי צמוד לדירה, מרחק הליכה מכל הדברים שתל אביב מציעה.",
+    "images": [ "picture for project/shilat/1.1.sale/1.1.1.png", 
+                "picture for project/shilat/1.1.sale/1.1.2.png",
+                "picture for project/shilat/1.1.sale/1.1.3.png",
+                "picture for project/shilat/1.1.sale/1.1.4.png"],
+    "status": "מאושר"
+},
+    
+{
+    "owner": null,
+    "type": "דירה למכירה",
+    "price": "3,520,000",
+    "address": {
+        "apartmentNumber": 1,
+        "street": "ארלוזורוב 50",
+        "city": "תל אביב יפו",
+        "region": "מרכז"
+    },
+    "apartmentDetails": {
+        "sizeInSquareMeters": 70,
+        "numberOfRooms": 2.5,
+        "floor": "1"
+    },
+    "description": "מיקום מעולה בין אדם הכהן ודיזינגוף, הליכה קצרה מהים, ליד איזורי הבילוי. תקרות גבוהות, מלאה אור. מרפסת חזית גדולה עם חלונות זכוכית. 2 חדרים גדולים + חצי חדר. מטבח נפרד עם מרפסת שירות. השקעה מצויינת -להשכרה כך שיפוץ, פוטנציאל-3.5/4 חדרים.",
+    "images": [ "picture for project/shilat/1.2.sale/1.2.1.png",
+                "picture for project/shilat/1.2.sale/1.2.2.png",
+                "picture for project/shilat/1.2.sale/1.2.3.png",
+                "picture for project/shilat/1.2.sale/1.2.4.png",
+                "picture for project/shilat/1.2.sale/1.2.5.png",
+                "picture for project/shilat/1.2.sale/1.2.6.png"],
+    "status": "מאושר"
+},
+    
+{
+    "owner": null,
+    "type": "דירה למכירה",
+    "price": "7,680,000",
+    "address": {
+        "apartmentNumber": 1,
+        "street": "בלוך דוד 8",
+        "city": "תל אביב יפו",
+        "region": "מרכז"
+    },
+    "apartmentDetails": {
+        "sizeInSquareMeters": 113,
+        "numberOfRooms": 4.5,
+        "floor": "2"
+    },
+    "description":"דירה ומיקום ייחודיים. מרווחת ביותר ומוארת. תקרות גבוהות. מרפסת רחבת ידיים בחזית, ומרפסות שירות. חזית הדירה בכיוון צפון-מערב.",
+    "images": [ "picture for project/shilat/1.3.sale/1.3.1.png",
+                "picture for project/shilat/1.3.sale/1.3.2.png",
+                "picture for project/shilat/1.3.sale/1.3.3.png",
+                "picture for project/shilat/1.3.sale/1.3.4.png",
+                "picture for project/shilat/1.3.sale/1.3.5.png",
+                "picture for project/shilat/1.3.sale/1.3.6.png",
+                "picture for project/shilat/1.3.sale/1.3.7.png",
+                "picture for project/shilat/1.3.sale/1.3.8.png",
+                "picture for project/shilat/1.3.sale/1.3.9.png"],
+    "status": "מאושר"
+},
+    
+{
+    "owner": null,
+    "type": "דירה להשכרה",
+    "price": "4,000",
+    "address": {
+        "apartmentNumber": 3,
+        "street": "אש שלום, נווה גן",
+        "city": "פתח תקווה",
+        "region": "מרכז"
+    },
+    "apartmentDetails": {
+        "sizeInSquareMeters": 65,
+        "numberOfRooms": 2,
+        "floor": "קרקע"
+    },
+    "description": "דירה משופצת נעימה שקטה מאוד קרובה לקו הרכבת הקלה",
+    "images": [ "picture for project/shilat/1.4.rent/1.4.1.png",
+                "picture for project/shilat/1.4.rent/1.4.2.png",
+                "picture for project/shilat/1.4.rent/1.4.3.png",
+                "picture for project/shilat/1.4.rent/1.4.4.png"],
+    "status": "מאושר"
+},
+    
+{
+    "owner": null,
+    "type": "דירה להשכרה",
+    "price": "4,400",
+    "address": {
+        "apartmentNumber": 7,
+        "street": "נחלתת צבי 25",
+        "city": "פתח תקווה",
+        "region": "מרכז"
+    },
+    "apartmentDetails": {
+        "sizeInSquareMeters": 60,
+        "numberOfRooms": 3.5,
+        "floor": "4"
+    },
+    "description": "דירה מקסימה ! מרכזית ,שקטה ,מאווררת. ליד: רכבת קלה. מרכזים מסחריים, בתי ספר , היכל התרבות. שלושה וחצי חדרים, שלוש מרפסות , שלושה כיווני אויר, נוף פתוח , שני ארונות, מזגן ,שני מאווררים. תנור, שולחן מטבח. לרציניים , לטווח ארוך.",
+    "images": [ "picture for project/shilat/1.5.rent/1.5.1.png",
+                "picture for project/shilat/1.5.rent/1.5.2.png",
+                "picture for project/shilat/1.5.rent/1.5.3.png",
+                "picture for project/shilat/1.5.rent/1.5.4.png"],
+    "status": "מאושר"
+},
+    
+    
+    
+{
+    "owner": null,
+    "type": "דירה למכירה",
+    "price": "2,290,000",
+    "address": {
+        "apartmentNumber": 4,
+        "street": "שכונת צפון מערב העיר",
+        "city": "רחובות",
+        "region": "שפלה"
+    },
+    "apartmentDetails": {
+        "sizeInSquareMeters": 103,
+        "numberOfRooms": 3,
+        "floor": "2"
+    },
+    "description":"במיקום הטוב ברחובות צפון מערב העיר רחוב ש. בן ציון דירת 3 חדרים ענקית",
+    "images": ["picture for project/tiferet/2.1.sale/2.1.1.png",
+               "picture for project/tiferet/2.1.sale/2.1.2.png",
+               "picture for project/tiferet/2.1.sale/2.1.3.png",
+               "picture for project/tiferet/2.1.sale/2.1.4.png",
+               "picture for project/tiferet/2.1.sale/2.1.5.png",
+               "picture for project/tiferet/2.1.sale/2.1.6.png"],
+    "status": "מאושר"
+},
+    
+{
+    "owner": null,
+    "type":"דירה למכירה",
+    "price": "4,600,000",
+    "address": {
+        "apartmentNumber": 2,
+        "street": "בן יהודה 188",
+        "city": "תל אביב יפו",
+        "region": "מרכז"
+    },
+    "apartmentDetails": {
+        "sizeInSquareMeters": 80,
+        "numberOfRooms": 3,
+        "floor": "1"
+    },
+    "description":"למכירה! דירה שקטה ומוארת במיקום הכי מרכזי בתל אביב – רחוב בן יהודה.",
+    "images": ["picture for project/tiferet/2.2.sale/2.2.1.png",
+               "picture for project/tiferet/2.2.sale/2.2.2.png",
+               "picture for project/tiferet/2.2.sale/2.2.3.png",
+               "picture for project/tiferet/2.2.sale/2.2.4.png",
+               "picture for project/tiferet/2.2.sale/2.2.5.png",
+               "picture for project/tiferet/2.2.sale/2.2.6.png",
+               "picture for project/tiferet/2.2.sale/2.2.7.png",
+               "picture for project/tiferet/2.2.sale/2.2.8.png"],
+    "status":"מאושר"
+},
+    
+{
+    "owner": null,
+    "type": "דירה למכירה",
+    "price": "2,200,000",
+    "address": {
+        "apartmentNumber": null,
+        "street": "מרטון 4",
+        "city": "רחובות",
+        "region": "שפלה"
+    },
+    "apartmentDetails": {
+        "sizeInSquareMeters": 80,
+        "numberOfRooms": 3.5,
+        "floor": "קרקע"
+    },
+    "description": "דירה מקסימה, עם חצר ענקית וכניסה נפרדת, במיקום מרכזי, קרוב למכון ויצמן ולרחוב הרצל. 3.5 חדרים, קומת קרקע",
+    "images": ["picture for project/tiferet/2.3.sale/2.3.1.png",
+               "picture for project/tiferet/2.3.sale/2.3.2.png",
+               "picture for project/tiferet/2.3.sale/2.3.3.png",
+               "picture for project/tiferet/2.3.sale/2.3.4.png",
+               "picture for project/tiferet/2.3.sale/2.3.5.png",
+               "picture for project/tiferet/2.3.sale/2.3.6.png",
+               "picture for project/tiferet/2.3.sale/2.3.7.png"],
+    "status": "מאושר"
+},
+    
+{
+    "owner": null,
+    "type": "דירה להשכרה",
+    "price": "5,590",
+    "address": {
+        "apartmentNumber": 2,
+        "street": "לבונה 1, גילה",
+        "city": "ירושלים",
+        "region": "ירושלים והסביבה"
+    },
+    "apartmentDetails": {
+        "sizeInSquareMeters": 90,
+        "numberOfRooms": 4,
+        "floor": "1"
+    },
+    "description": "דירה מקסימה! כוללת חניה ומיזוג אויר",
+    "images": ["picture for project/tiferet/2.4.rent/2.4.1.png",
+               "picture for project/tiferet/2.4.rent/2.4.2.png",
+               "picture for project/tiferet/2.4.rent/2.4.3.png",
+               "picture for project/tiferet/2.4.rent/2.4.4.png"],
+    "status": "מאושר"
+},
+    
+{
+    "owner": null,
+    "type": "דירה להשכרה",
+    "price": "2,400",
+    "address": {
+        "apartmentNumber": 5,
+        "street": "ברוריה 9",
+        "city": "ירושלים",
+        "region": "ירושלים והסביבה"
+    },
+    "apartmentDetails": {
+        "sizeInSquareMeters": 70,
+        "numberOfRooms": 3,
+        "floor": "3"
+    },
+    "description": "הדירה נעימה, שקטה ומוארת. בדירה יש 2 חדרי שינה וסלון ממנו יציאה למרפסת גדולה.",
+    "images": ["picture for project/tiferet/2.5.rent/2.5.1.png",
+               "picture for project/tiferet/2.5.rent/2.5.2.png",
+               "picture for project/tiferet/2.5.rent/2.5.3.png",
+               "picture for project/tiferet/2.5.rent/2.5.4.png",
+               "picture for project/tiferet/2.5.rent/2.5.5.png",
+               "picture for project/tiferet/2.5.rent/2.5.6.png"],
+    "status": "מאושר"
+}
+]
