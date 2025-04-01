@@ -1,15 +1,22 @@
 /* navbar */
 .header {
-    height: 110 !important;
+    padding:  15px 5px !important;
+}
+
+.header #titelMainPage{
+    margin-top: 8px !important;
 }
 
 #titelMainPage {
-    font-size: 2.5rem !important;
     font-weight: bold !important;
 }
 
+ul{
+    line-height: 1.15rem !important;
+}
+
 #iconPerson {
-    height: 47 !important;
+    height: auto !important;
 }
 /* end - navbar */
 
