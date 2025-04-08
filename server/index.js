@@ -24,6 +24,17 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'client', 'mainPage.html'));
 });
 
+/*// הגדרת נתיב לעמוד התחברות
+app.get('/login', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'client', 'login.html'));
+});
+
+// הגדרת נתיב לעמוד הרשמה
+app.get('/registration', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'client', 'registration.html'));
+});*/
+
+
 //  ייבוא הראוטרים
 const userRoutes = require('./routes/userRoutes');
 const apartmentRoutes = require('./routes/apartmentRoutes');

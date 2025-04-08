@@ -1,4 +1,4 @@
-/*קרוסלה*/ 
+/*קרוסלה*/
 const slider1 = document.querySelector('.slider1');
 const prevBtn1 = document.querySelector('.prev-btn1');
 const nextBtn1 = document.querySelector('.next-btn1');
