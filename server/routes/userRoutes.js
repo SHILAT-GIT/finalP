@@ -83,4 +83,62 @@ router.delete('/delete-account/:id', async (req, res) => {
     }
 });
 
+//הרשמה
+router.post('/register', async (req, res) => {
+    const { name, email, phone, password } = req.body;
+
+    try {
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return res.status(400).json({ message: "כתובת המייל כבר רשומה." });
+        }
+
+        const newUser = new User({
+            name,
+            email,
+            phone,
+            password, 
+        });
+
+        await newUser.save();
+        res.status(201).json({ message: "המשתמש נוצר בהצלחה." });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "שגיאה בשרת." });
+    }
+});
+
+//התחברות
+router.post("/login", async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(404).json({ message: "משתמש לא קיים במערכת." });
+        }
+
+        if (user.password !== password) {
+            return res.status(401).json({ message: "סיסמה שגויה." });
+        }
+
+        // החזרת מידע רלוונטי בלבד (בלי הסיסמה!)
+        const userInfo = {
+            id: user._id,
+            name: user.name,
+            email: user.email,
+            phone: user.phone,
+            role: user.role,
+        };
+
+        res.status(200).json({ message: "התחברות הצליחה", user: userInfo });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "שגיאה בשרת." });
+    }
+});
+
+
+
 module.exports = router;

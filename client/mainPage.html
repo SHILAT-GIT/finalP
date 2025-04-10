@@ -17,16 +17,20 @@
       <span id="logo"><a href="mainPage.html"><img src="logo.jpg"></a></span>
       <h1 id="titelMainPage">דירות ישראל</h1>
       <span id="buttonMainPageHeader">
-        <!-- כפתורים לפתיחת החלונות -->
-        <button class="btn" onclick="openModal('loginModal')">התחברות</button>
+        <!-- כפתור התחברות -->
+        <button class="btn" id="btnLogin" onclick="openModal('loginModal')">התחברות</button>
+        <!-- כפתור התנתקות (מוסתר בהתחלה) -->
+        <button class="btn" id="btnLogout" onclick="logout()" style="display: none;">התנתקות</button>
+        <!-- כפתור הרשמה -->
         <button class="btn" onclick="openModal('registerModal')">הרשמה</button>
+
 
         <!-- התחברות -->
         <div class="modal-overlay" id="loginModal">
           <div class="modal">
             <button class="close-btn" onclick="closeModal('loginModal')">×</button>
             <h2>התחברות למערכת</h2>
-            <input class="inputLoginRegister" type="text" id="loginUser" placeholder="שם משתמש" />
+            <input class="inputLoginRegister" type="email" id="loginEmail" placeholder="כתובת מייל" />
             <div class="password-container">
               <input class="inputLoginRegister" type="password" id="loginPass" placeholder="סיסמה" />
               <span class="toggle-password" onclick="togglePassword('loginPass', this)">
@@ -72,7 +76,7 @@
         <i class="fas fa-search search-icon"></i>
         <input type="text" id="searchInput" placeholder="...חפש">
       </li>
-      <li style="float: left;"><a href="personalArea.html" id="iconPerson"><i class="fas fa-user"></i></a></li>
+      <li style="float: left; display: none;" id="iconUser"><a href="personalArea.html" id="iconPerson"><i class="fas fa-user"></i></a></li>
     </ul>
   </header>
   <br />
