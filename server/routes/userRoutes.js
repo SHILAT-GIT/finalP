@@ -44,6 +44,23 @@ router.post('/remove-saved-apartment', async (req, res) => {
     }
 });
 
+// Get user profile
+router.get('/profile/:id', async (req, res) => {
+    const userId = req.params.id;
+
+    try {
+        const user = await User.findById(userId).select('-password -savedApartments');
+        if (!user) {
+            return res.status(404).send({ message: 'User not found' });
+        }
+
+        res.status(200).send({ message: 'Account successfully deleted', user: user });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ message: 'Server error. Please try again later.' });
+    }
+});
+
 // Update user profile
 router.post('/update-profile', async (req, res) => {
     const { userId, updateData } = req.body;
@@ -97,7 +114,7 @@ router.post('/register', async (req, res) => {
             name,
             email,
             phone,
-            password, 
+            password,
         });
 
         await newUser.save();
