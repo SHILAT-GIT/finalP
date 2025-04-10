@@ -1,3 +1,7 @@
+body {
+    font-family: 'Arial', sans-serif;
+}
+
 /*כותרת עליונה*/
 #buttonMainPageHeader {
     position: absolute;
@@ -151,7 +155,7 @@ nav a {
 
 .search-container i {
     padding: 10px;
-    color:rgb(243, 242, 242);
+    color: rgb(243, 242, 242);
     cursor: pointer;
     transition: color 0.3s ease;
     /* הוספת מעבר חלק */
@@ -251,18 +255,18 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 999;
-  }
-  
-  .modal {
+}
+
+.modal {
     background: white;
     padding: 2rem;
     border-radius: 10px;
     width: 320px;
     position: relative;
     text-align: center;
-  }
-  
-  .close-btn {
+}
+
+.close-btn {
     position: absolute;
     top: 10px;
     left: 10px;
@@ -271,14 +275,14 @@ body {
     border-radius: 10px;
     cursor: pointer;
     font-size: 1.3em;
-  }
-  
-  
-  .close-btn:hover {
+}
+
+
+.close-btn:hover {
     background-color: rgb(90, 179, 212);
-  }
-  
-  .btn-send {
+}
+
+.btn-send {
     background-color: rgb(157, 217, 239);
     border: none;
     color: black;
@@ -288,38 +292,38 @@ body {
     border-radius: 25px;
     cursor: pointer;
     margin-left: 5px;
-  }
-  
-  .btn-send:hover {
+}
+
+.btn-send:hover {
     background-color: rgb(90, 179, 212);
-  }
-  
-  
-  .inputLoginRegister {
+}
+
+
+.inputLoginRegister {
     width: 90%;
     padding: 8px;
     margin: 8px auto;
     border-radius: 5px;
     border: 1px solid #abaaaa;
-  }
-  
-  .error {
+}
+
+.error {
     color: red;
     font-size: 0.85em;
     margin-bottom: 10px;
-  }
-  
-  .password-container {
+}
+
+.password-container {
     position: relative;
     width: 90%;
     margin: 0px auto;
-  }
-  
-  .password-container input {
+}
+
+.password-container input {
     width: 100%;
-  }
-  
-  .toggle-password {
+}
+
+.toggle-password {
     position: absolute;
     top: 50%;
     left: 10%;
@@ -331,7 +335,7 @@ body {
     color: #555;
     padding: 0;
     width: 3px;
-  
-  }
-  
-  /*עד כאן התחברות והרשמה*/
+
+}
+
+/*עד כאן התחברות והרשמה*/

@@ -173,7 +173,8 @@ body {
 .testimonial {
   text-align: right;
   width: 50%;
-  margin-left: 25%;
+  margin-left: auto; /* מעדכן את המרווח השמאלי */
+  margin-right: auto;
   border: 1px solid #ddd;
   padding: 20px;
   margin-bottom: 20px;
@@ -198,7 +199,4 @@ body {
 #comments:hover {
   color: rgb(18, 97, 224);
 }
-
 /*עד כאן עיצוב התגובות*/
-
-

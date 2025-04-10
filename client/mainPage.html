@@ -1,91 +1,25 @@
-<html lang="he">
+<html lang="he" dir="rtl">
 
 <head>
   <link rel="stylesheet" href="mainPage.css">
-  <link rel="stylesheet" href="upAndDoun.css">
+  <link rel="stylesheet" href="headerAndFooter.css">
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>דירות ישראל/עמוד ראשי</title>
 </head>
 
 <body>
 
-  <header>
-    <div class="header">
-      <span id="logo"><a href="mainPage.html"><img src="logo.jpg"></a></span>
-      <h1 id="titelMainPage">דירות ישראל</h1>
-      <span id="buttonMainPageHeader">
-        <!-- כפתור התחברות -->
-        <button class="btn" id="btnLogin" onclick="openModal('loginModal')">התחברות</button>
-        <!-- כפתור התנתקות (מוסתר בהתחלה) -->
-        <button class="btn" id="btnLogout" onclick="logout()" style="display: none;">התנתקות</button>
-        <!-- כפתור הרשמה -->
-        <button class="btn" onclick="openModal('registerModal')">הרשמה</button>
-
-
-        <!-- התחברות -->
-        <div class="modal-overlay" id="loginModal">
-          <div class="modal">
-            <button class="close-btn" onclick="closeModal('loginModal')">×</button>
-            <h2>התחברות למערכת</h2>
-            <input class="inputLoginRegister" type="email" id="loginEmail" placeholder="כתובת מייל" />
-            <div class="password-container">
-              <input class="inputLoginRegister" type="password" id="loginPass" placeholder="סיסמה" />
-              <span class="toggle-password" onclick="togglePassword('loginPass', this)">
-                <i class="fa fa-eye"></i> </span>
-            </div>
-            <div id="loginError" class="error"></div>
-            <button class="btn-send" onclick="validateLogin()">שלח</button>
-          </div>
-        </div>
-        <!-- הרשמה -->
-        <div class="modal-overlay" id="registerModal">
-          <div class="modal">
-            <button class="close-btn" onclick="closeModal('registerModal')">×</button>
-            <h2>הרשמה למערכת</h2>
-            <input class="inputLoginRegister" type="text" id="regUser" placeholder="שם משתמש" />
-            <div class="password-container">
-              <input class="inputLoginRegister" type="password" id="regPass" placeholder="סיסמה" />
-              <span class="toggle-password" onclick="togglePassword('regPass', this)">
-                <i class="fa fa-eye"></i> </span>
-            </div>
-            <input class="inputLoginRegister" type="text" id="regPhone" placeholder="מספר טלפון" />
-            <input class="inputLoginRegister" type="email" id="regEmail" placeholder="כתובת מייל" />
-            <div id="registerError" class="error"></div>
-            <button class="btn-send" onclick="validateRegister()">שלח</button>
-          </div>
-        </div>
-      </span>
-    </div>
-
-    <ul>
-      <li><a href="mainPage.html">בית</a></li>
-      <li><a href="about.html">אודותנו</a></li>
-      <li class="dropdown">
-        <a href="apartments.html" class="dropbtn">דירות</a>
-        <div class="dropdown-content">
-          <a href="apartmentsForSale.html">דירות למכירה</a>
-          <a href="apartmentsForRent.html">דירות להשכרה</a>
-        </div>
-      </li>
-      <li><a href="newApartment.html">פרסם דירה +</a></li>
-      <li><a href="newInquiry.html">השאר פניה +</a></li>
-      <li class="search-container" style="margin-top: 3.5px;">
-        <i class="fas fa-search search-icon"></i>
-        <input type="text" id="searchInput" placeholder="...חפש">
-      </li>
-      <li style="float: left; display: none;" id="iconUser"><a href="personalArea.html" id="iconPerson"><i class="fas fa-user"></i></a></li>
-    </ul>
-  </header>
+  <header id="header"></header>
   <br />
 
   <main id="contentPage">
 
     <span id="textMainPage">
-      <h1>!ברוכים הבאים לאתר הדירות המוביל בישראל</h1>
-      <h3>.כאן, ב-דירות ישראל, תמצאו מגוון רחב של דירות למכירה ולהשכרה, עם שירות תיווך אמין ומותאם אישית</h3>
+      <h1>ברוכים הבאים לאתר הדירות המוביל בישראל!</h1>
+      <h3>כאן, ב-דירות ישראל, תמצאו מגוון רחב של דירות למכירה ולהשכרה, עם שירות תיווך אמין ומותאם אישית.</h3>
     </span>
     <br />
     <br />
@@ -111,10 +45,10 @@
 
     <div class="search-apartments">
       <span>
-        <h2>?מחפשים דירה</h2>
-        <span>.אצלנו תמצאו מגוון רחב של דירות למכירה ולהשכרה, עם שירות אישי וליווי צמוד לאורך כל הדרך</span><br />
-        <span>.צפו במגוון הדירות שלנו באתר, ואנחנו כאן כדי לעזור לכם בכל שלב, עד למציאת הדירה המתאימה לכם</span><br />
-        <span>!התחילו את החיפוש עוד היום</span><br /><br />
+        <h2>מחפשים דירה?</h2>
+        <span>אצלנו תמצאו מגוון רחב של דירות למכירה ולהשכרה, עם שירות אישי וליווי צמוד לאורך כל הדרך.</span><br />
+        <span>צפו במגוון הדירות שלנו באתר, ואנחנו כאן כדי לעזור לכם בכל שלב, עד למציאת הדירה המתאימה לכם.</span><br />
+        <span>התחילו את החיפוש עוד היום!</span><br /><br />
         <span><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 4V20M12 20L19 13M12 20L5 13" stroke="black" stroke-width="2" stroke-linecap="round"
               stroke-linejoin="round" />
@@ -124,7 +58,7 @@
 
     <br />
 
-    <h1 style="text-align: center; font-size: 2.5em;">.דירות למכירה/השכרה</h1>
+    <h1 style="text-align: center; font-size: 2.5em;">דירות למכירה/השכרה.</h1>
     <br />
     <div class="container">
       <div class="slider-container slider-right">
@@ -164,7 +98,7 @@
     <br />
     <br />
 
-    <h1 style="text-align: center;">:תגובות לקוחות מרוצים</h1>
+    <h1 style="text-align: center;">תגובות לקוחות מרוצים:</h1>
     <div class="testimonial">
       <p>"חיפשתי דירה להשכרה באזור המרכז במשך חודשים, ולא מצאתי משהו שמתאים לי. הגעתי למשרד תיווך דירות ישראל, והם מיד
         הבינו מה אני מחפש. תוך שבוע מצאו לי דירה מקסימה, בדיוק כמו שרציתי. אני מאוד מרוצה מהשירות המקצועי והיחס האישי."
@@ -196,36 +130,20 @@
     </div>
     <br />
 
-    <span class="testimonial"><a href="comments.html" id="comments">...לכל התגובות</a></span>
+    <span class="testimonial" style="margin-right: 67.5%;"><a href="comments.html" id="comments">לכל התגובות...</a></span>
     <br />
     <br />
     <br />
     <br />
 
   </main>
-  <footer>
-    <div class="footer-content">
-      <div class="contact-info">
-        <p><b>:פרטי יצירת קשר</b></p>
-        <p>כתובת: תל אביב, רחוב אלנבי 123</p>
-        <p>טלפון: 03-1234567</p>
-        <p>DirotIsrael@gmail.com :אימייל</p>
-      </div>
-      <div class="social-icons">
-        <p><b>:בקרו אותנו ברשתות החברתיות</b></p>
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-      </div>
-    </div>
-  </footer>
+
+  <footer id="footer"></footer>
 
   <div id="divLogin"></div>
 
-
-
   <script src="kod.js"></script>
+  <script src="headerAndFooter.js"></script>
   <script src="registration&login.js"></script>
 
 </body>

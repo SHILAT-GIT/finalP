@@ -49,10 +49,6 @@ function clearInputs(modalId) {
       input.value = '';
     }
   });
-
-  /*// איפוס צ׳קבוקסים אם יש
-  const checkboxes = modal.querySelectorAll('input[type="checkbox"]');
-  checkboxes.forEach(checkbox => checkbox.checked = false);*/
 }
 
 
@@ -79,41 +75,13 @@ function togglePassword(inputId, toggleElement) {
 
 
 
-
-/*function validateLogin() {
-  const user = document.getElementById("loginUser").value.trim();
-  const pass = document.getElementById("loginPass").value.trim();
-  const errorDiv = document.getElementById("loginError");
-
-  if (!user && !pass) {
-    errorDiv.textContent = "נא למלא שם משתמש וסיסמה.";
-    return;
-  }
-
-  if (!user) {
-    errorDiv.textContent = "נא למלא שם משתמש.";
-    return;
-  }
-
-  if (!pass) {
-    errorDiv.textContent = "נא למלא סיסמה.";
-    return;
-  }
-
-
-
-  errorDiv.textContent = "";
-  alert("התחברת בהצלחה!");
-  closeModal("loginModal");
-}*/
-
 async function validateLogin() {
   const email = document.getElementById("loginEmail").value.trim();
   const pass = document.getElementById("loginPass").value.trim();
   const errorDiv = document.getElementById("loginError");
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
+  const emailRegex = /^[a-zA-Z0-9._-]{2,}@[a-zA-Z0-9.-]{2,}\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?$/;
+  const passwordRegex = /^(?!.*\s).*/;
 
   if (!email && !pass) {
     errorDiv.textContent = "נא למלא כתובת מייל וסיסמה.";
@@ -125,13 +93,23 @@ async function validateLogin() {
     return;
   }
 
-  if (!emailRegex.test(email)) {
-    errorDiv.textContent = "כתובת מייל לא תקינה.";
+  if (!pass) {
+    errorDiv.textContent = "נא למלא סיסמה.";
     return;
   }
 
-  if (!pass) {
-    errorDiv.textContent = "נא למלא סיסמה.";
+  if (pass.length < 6) {
+    errorDiv.textContent = "סיסמה חייבת להכיל לפחות 6 תווים.";
+    return;
+  }
+
+  if (!passwordRegex.test(pass)) {
+    errorDiv.textContent = "סיסמה לא תקינה";
+    return;
+  }
+
+  if (!emailRegex.test(email)) {
+    errorDiv.textContent = "כתובת מייל לא תקינה.";
     return;
   }
 
@@ -151,7 +129,7 @@ async function validateLogin() {
 
     if (response.ok) {
       // שמירה ב-localStorage
-     // localStorage.setItem("user", JSON.stringify(result.user));
+      // localStorage.setItem("user", JSON.stringify(result.user));
       localStorage.setItem("user", JSON.stringify({
         id: result.user.id,
         role: result.user.role
@@ -173,23 +151,23 @@ async function validateLogin() {
   }
 }
 
-//פונקציה זו אחראית על החלפת כפתור התחברות להתנתקות בביצוע בתחברות
+//פונקציה זו אחראית על החלפת כפתור התחברות להתנתקות בביצוע התחברות
 function updateAuthUI() {
   const user = localStorage.getItem("user");
 
   const btnLogin = document.getElementById("btnLogin");
-  /*const btnRegister = document.getElementById("btnRegister");*/
+  const btnRegister = document.getElementById("btnRegister");
   const btnLogout = document.getElementById("btnLogout");
   const iconUser = document.getElementById("iconUser");
 
   if (user) {
     btnLogin.style.display = "none";
-    /*btnRegister.style.display = "none";*/
+    btnRegister.style.display = "none";
     btnLogout.style.display = "inline-block";
     iconUser.style.display = "inline-block";
   } else {
     btnLogin.style.display = "inline-block";
-    /*btnRegister.style.display = "inline-block";*/
+    btnRegister.style.display = "inline-block";
     btnLogout.style.display = "none";
     iconUser.style.display = "none";
   }
@@ -201,36 +179,6 @@ window.onload = function () {
 };
 
 
-
-/*function validateRegister() {
-  const user = document.getElementById("regUser").value.trim();
-  const pass = document.getElementById("regPass").value.trim();
-  const phone = document.getElementById("regPhone").value.trim();
-  const email = document.getElementById("regEmail").value.trim();
-  const errorDiv = document.getElementById("registerError");
-
-  const phoneRegex = /^[0-9]{9,10}$/;
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  if (!user || !pass || !phone || !email) {
-    errorDiv.textContent = "נא למלא את כל השדות.";
-    return;
-  }
-
-  if (!phoneRegex.test(phone)) {
-    errorDiv.textContent = "מספר טלפון לא תקין.";
-    return;
-  }
-
-  if (!emailRegex.test(email)) {
-    errorDiv.textContent = "כתובת מייל לא תקינה.";
-    return;
-  }
-
-  errorDiv.textContent = "";
-  alert("נרשמת בהצלחה!");
-  closeModal("registerModal");
-}*/
 async function validateRegister() {
   const user = document.getElementById("regUser").value.trim();
   const pass = document.getElementById("regPass").value.trim();
@@ -238,11 +186,22 @@ async function validateRegister() {
   const email = document.getElementById("regEmail").value.trim();
   const errorDiv = document.getElementById("registerError");
 
-  const phoneRegex = /^[0-9]{9,10}$/;
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const phoneRegex = /05[0-9]{8}$/;
+  const emailRegex = /^[a-zA-Z0-9._-]{2,}@[a-zA-Z0-9.-]{2,}\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?$/;
+  const passwordRegex = /^(?!.*\s).*/;
 
   if (!user || !pass || !phone || !email) {
     errorDiv.textContent = "נא למלא את כל השדות.";
+    return;
+  }
+
+  if (pass.length < 6) {
+    errorDiv.textContent = "סיסמה חייבת להכיל לפחות 6 תווים.";
+    return;
+  }
+
+  if (!passwordRegex.test(pass)) {
+    errorDiv.textContent = "סיסמה לא תקינה.";
     return;
   }
 
@@ -300,9 +259,23 @@ document.querySelectorAll('#loginModal input').forEach(input => {
   });
 });
 
+
 //פונקציה המתבצעת בלחיצה על כפתור התנתקות
 function logout() {
-  localStorage.removeItem("user");
-  updateAuthUI();
-  alert("התנתקת מהמערכת.");
+  const confirmLogout = confirm("האם אתה בטוח שברצונך להתנתק מהמערכת?");
+
+  if (confirmLogout) {
+    localStorage.removeItem("user");
+    updateAuthUI();
+    alert("התנתקת מהמערכת.");
+    if (window.location.pathname.startsWith("/personalArea") ||
+      window.location.pathname.startsWith("/personalAreaApartments") ||
+      window.location.pathname.startsWith("/personalAreaInquiries") ||
+      window.location.pathname.startsWith("/savedApartments")) {
+      window.location.href = "/";
+    }
+  } else {
+    alert("ההתנתקות בוטלה.");
+  }
 }
+
