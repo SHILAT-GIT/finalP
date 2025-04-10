@@ -27,6 +27,29 @@ function adjustForAdmin() {
     }
 }
 
+// Gets the user's profile details by sending a request to the server
+function getUserProfile() {
+    fetch(`api/users/profile/${user.id}`)
+        .then(response => {
+            if (response.status === 200) {
+                return response.json().then(data => fillUserProfileForm(data.user));
+            } else if (response.status === 404) {
+                console.error("משתמש לא נמצא.");
+            }
+        })
+        .catch(error => {
+            console.error(error);
+            console.error("אירעה שגיאה בהצגת הדירות, נסו שוב מאוחר יותר");
+        });
+}
+
+// Fills the update profile form inputs with the user's existing profile details
+function fillUserProfileForm(user) {
+    document.querySelector('input[name="name"]').value = user.name || '';
+    document.querySelector('input[name="email"]').value = user.email || '';
+    document.querySelector('input[name="phone"]').value = user.phone || '';
+}
+
 // Updates the user's profile details by sending a request to the server
 function updateProfile(event, submitButton) {
     const form = document.querySelector('.needs-validation');
@@ -113,6 +136,9 @@ function deleteAccount(deleteButton) {
 document.addEventListener("DOMContentLoaded", () => {
     // Calls a function to check if the logged-in user is an admin, and adjusts the displayed content accordingly.
     adjustForAdmin();
+
+    // Calls a function to get user's profile details from the server and fill the update profile form inputs with the existing details
+    getUserProfile();
 
     // Resets the form and removes validation styles when the accordion item is reopened.
     const accordionItem = document.getElementById('collapseOne');
