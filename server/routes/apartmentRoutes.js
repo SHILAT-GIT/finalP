@@ -4,7 +4,7 @@ const router = express.Router();
 const Apartment = require('../models/Apartment');
 const User = require('../models/User');
 
-// Fetch all apartments
+// Fetch all apartments for admin
 router.get('/all-apartments', async (req, res) => {
     try {
         const apartments = await Apartment.find().populate('owner', '-password -role')
