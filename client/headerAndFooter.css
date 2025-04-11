@@ -8,7 +8,7 @@ body {
     left: 20;
 }
 
-.btn {
+.my-btn {
     background-color: white;
     /* צבע רקע */
     border: none;
@@ -34,7 +34,7 @@ body {
     margin-left: 5px;
 }
 
-.btn:hover {
+.my-btn:hover {
     background-color: #68b4e7;
     /* צבע רקע במעבר עכבר */
 }
@@ -89,15 +89,15 @@ li a,
 }
 
 li a:hover,
-.dropdown:hover .dropbtn {
+.my-dropdown:hover .dropbtn {
     background-color: rgb(164, 210, 244);
 }
 
-li.dropdown {
+li.my-dropdown {
     display: inline-block;
 }
 
-.dropdown-content {
+.my-dropdown-content {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
@@ -106,18 +106,18 @@ li.dropdown {
     z-index: 1;
 }
 
-.dropdown-content a {
+.my-dropdown-content a {
     color: black;
     text-decoration: none;
     display: block;
     text-align: right;
 }
 
-.dropdown-content a:hover {
+.my-dropdown-content a:hover {
     background-color: #f1f1f1;
 }
 
-.dropdown:hover .dropdown-content {
+.my-dropdown:hover .my-dropdown-content {
     display: block;
 }
 

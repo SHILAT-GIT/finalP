@@ -19,6 +19,9 @@ ul{
     height: auto !important;
 }
 
+.btn{
+    line-height: normal !important;
+}
 /* end - navbar */
 
 .container {
