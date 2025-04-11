@@ -33,7 +33,7 @@ router.post('/send-inquiry', async (req, res) => {
     }
 });
 
-// Fetch all inquiries
+// Fetch all inquiries for admin
 router.get('/all-inquiries', async (req, res) => {
     try {
         const inquiries = await Inquiry.find()
