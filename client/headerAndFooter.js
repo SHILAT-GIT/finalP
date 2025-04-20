@@ -21,7 +21,7 @@ function header() {
 
         <!-- התחברות -->
         <div class="modal-overlay" id="loginModal">
-          <div class="modal">
+          <div class="my-modal">
             <button class="close-btn" onclick="closeModal('loginModal')">×</button>
             <h2>התחברות למערכת</h2>
             <input class="inputLoginRegister" type="email" id="loginEmail" placeholder="כתובת מייל" />
@@ -36,7 +36,7 @@ function header() {
         </div>
         <!-- הרשמה -->
         <div class="modal-overlay" id="registerModal">
-          <div class="modal">
+          <div class="my-modal">
             <button class="close-btn" onclick="closeModal('registerModal')">×</button>
             <h2>הרשמה למערכת</h2>
             <input class="inputLoginRegister" type="text" id="regUser" placeholder="שם משתמש" />

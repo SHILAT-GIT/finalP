@@ -122,7 +122,7 @@ function displayUserInquiries(inquiries) {
                     </button>
                 </div>
             </td>
-            <td><span class="badge badge-status ${getStatusClass(inquiry.apartment.status)}">${inquiry.apartment.status === "התקבל" ? "נשלח" : inquiry.apartment.status}</span></td>
+            <td><span class="badge badge-status ${getStatusClass(inquiry.status)}">${inquiry.status === "התקבל" ? "נשלח" : inquiry.status}</span></td>
             <td><i class="bi bi-chevron-down icon-toggle" onclick="toggleDescription(${index})"></i></td>
         `;
 
@@ -220,9 +220,9 @@ function displayManageInquiries(inquiries) {
     const container = document.getElementById('inquiriesContainer');
     container.innerHTML = '';
 
-    const accepted = inquiries.filter(inquiry => inquiry.apartment.status === 'התקבל');
-    const processing = inquiries.filter(inquiry => inquiry.apartment.status === 'בטיפול');
-    const done = inquiries.filter(inquiry => inquiry.apartment.status === 'טופל');
+    const accepted = inquiries.filter(inquiry => inquiry.status === 'התקבל');
+    const processing = inquiries.filter(inquiry => inquiry.status === 'בטיפול');
+    const done = inquiries.filter(inquiry => inquiry.status === 'טופל');
 
     const accordion = document.createElement('div');
     accordion.classList.add('accordion');
@@ -298,14 +298,14 @@ function displayManageInquiries(inquiries) {
                         </button>
                     </div>
                 </td>
-                <td><span class="badge badge-status ${getStatusClass(inquiry.apartment.status)}">${inquiry.apartment.status}</span></td>
+                <td><span class="badge badge-status ${getStatusClass(inquiry.status)}">${inquiry.status}</span></td>
                 <td>
-                    <div style="display: flex; justify-content: ${inquiry.apartment.status === 'התקבל' ? 'space-evenly' : 'center'};">
-                        ${inquiry.apartment.status !== "בטיפול"
+                    <div style="display: flex; justify-content: ${inquiry.status === 'התקבל' ? 'space-evenly' : 'center'};">
+                        ${inquiry.status !== "בטיפול"
                     ? `<i class="bi bi-pencil-square icon-button text-primary" onclick="changeInquiryStatus(${inquiry._id}, 'בטיפול')"></i>`
                     : ""}
         
-                        ${inquiry.apartment.status !== "טופל"
+                        ${inquiry.status !== "טופל"
                     ? `<i class="bi bi-check-circle icon-button text-success" onclick="changeInquiryStatus(${inquiry._id}, 'טופל')"></i>`
                     : ""}
                     </div>
@@ -411,7 +411,7 @@ function deleteInquiry(inquiryId) {
                 .then(response => {
                     if (response.status === 200) {
                         fetchData();
-                        showToast("הפניה נמחקה בהצלחה!", "error");
+                        showToast("הפניה נמחקה בהצלחה!", "success");
                     } else {
                         showToast("אירעה שגיאה במחיקת הפניה, נסו שוב מאוחר יותר", "error");
                     }

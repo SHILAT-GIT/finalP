@@ -417,7 +417,7 @@ function deleteApartment(apartmentId) {
                 .then(response => {
                     if (response.status === 200) {
                         fetchData();
-                        showToast("הדירה נמחקה בהצלחה!", "error");
+                        showToast("הדירה נמחקה בהצלחה!", "success");
                     } else {
                         showToast("אירעה שגיאה במחיקת הדירה, נסו שוב מאוחר יותר", "error");
                     }
