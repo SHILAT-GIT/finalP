@@ -78,77 +78,45 @@ router.delete('/delete-apartment/:id', async (req, res) => {
     }
 });
 
-/*//בקשת שרת לשליפת כל הדירות המאושרות
-router.get('/apartments', async (req, res) => {
-    
+//בקשת שרת לשליפת כל הדירות המאושרות
+router.get('/apartments', async (_, res) => {
     try {
-        const apartments = await Apartment.find({ status: "מאושר" }).select('-owner');
-
-        if (!apartments || apartments.length === 0) {
-            return res.status(404).send({ message: 'No apartments found.' });
-        }
-
-        res.status(200).send({ message: 'Apartments retrieved successfully.', apartments: apartments });
-    } catch (error) {
-        console.error(error);
-        res.status(500).send({ message: 'Server error. Please try again later.' });
+        const apartments = await Apartment.find({ status: "מאושר" });
+        res.send({ apartments });
+    } catch (err) {
+        res.status(500).send({ message: 'שגיאה בשרת' });
     }
 });
 
-// בקשת שרת לשליפת כל הדירות המאושרות שהן למכירה
-router.get('/apartmentsForSale', async (req, res) => {
-    
+//בקשת שרת לשליפת דירה לפי מזהה
+router.get('/apartments/:id', async (req, res) => {
     try {
-        const apartments = await Apartment.find({ status: "מאושר", type: "דירה למכירה" }).select('-owner');
-
-        if (!apartments || apartments.length === 0) {
-            return res.status(404).send({ message: 'No apartments found.' });
-        }
-
-        res.status(200).send({ message: 'Apartments retrieved successfully.', apartments: apartments });
-    } catch (error) {
-        console.error(error);
-        res.status(500).send({ message: 'Server error. Please try again later.' });
+        const apartment = await Apartment.findById(req.params.id);
+        res.send({ apartment });
+    } catch (err) {
+        res.status(500).send({ message: 'שגיאה בשרת' });
     }
 });
 
-// בקשת שרת לשליפת כל הדירות המאושרות שהן להשכרה
-router.get('/apartmentsForRent', async (req, res) => {
-    
+// דירות להשכרה
+router.get('/for-rent', async (_, res) => {
     try {
-        const apartments = await Apartment.find({ status: "מאושר", type: "דירה להשכרה" }).select('-owner');
-
-        if (!apartments || apartments.length === 0) {
-            return res.status(404).send({ message: 'No apartments found.' });
-        }
-
-        res.status(200).send({ message: 'Apartments retrieved successfully.', apartments: apartments });
-    } catch (error) {
-        console.error(error);
-        res.status(500).send({ message: 'Server error. Please try again later.' });
-    }
-});*/
-
-// בקובץ routes/apartments.js (או איפה שאת מנהלת את הרואטר)
-
-router.get('/apartments', async (req, res) => {
-    try {
-      const apartments = await Apartment.find({ status: "מאושר" });
-      res.send({ apartments });
+        const apartments = await Apartment.find({ status: "מאושר", type: "דירה להשכרה" });
+        res.send({ apartments });
     } catch (err) {
-      res.status(500).send({ message: 'שגיאה בשרת' });
+        res.status(500).send({ message: 'שגיאה בשרת' });
     }
-  });
-  
-  router.get('/apartments/:id', async (req, res) => {
+});
+
+// דירות למכירה
+router.get('/for-sale', async (_, res) => {
     try {
-      const apartment = await Apartment.findById(req.params.id);
-      res.send({ apartment });
+        const apartments = await Apartment.find({ status: "מאושר", type: "דירה למכירה" });
+        res.send({ apartments });
     } catch (err) {
-      res.status(500).send({ message: 'שגיאה בשרת' });
+        res.status(500).send({ message: 'שגיאה בשרת' });
     }
-  });
-  
+});
 
 
 module.exports = router;
