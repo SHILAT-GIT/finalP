@@ -267,7 +267,7 @@ body {
     z-index: 999;
 }
 
-.modal {
+.my-modal {
     background: white;
     padding: 2rem;
     border-radius: 10px;
