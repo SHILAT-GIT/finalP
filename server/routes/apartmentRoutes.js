@@ -118,5 +118,38 @@ router.get('/for-sale', async (_, res) => {
     }
 });
 
+//חיפוש
+router.get('/search', async (req, res) => {
+    const { q } = req.query;
+  
+    if (!q) return res.send({ apartments: [] });
+  
+    const searchRegex = new RegExp(q, 'i');
+    const qAsNumber = Number(q);
+    const isNumber = !isNaN(qAsNumber);
+  
+    let query = {
+      status: "מאושר",
+      $or: [
+        { type: searchRegex },
+        { "address.city": searchRegex },
+        { "address.street": searchRegex }
+      ]
+    };
+  
+    if (isNumber) {
+      query.$or.push({ "apartmentDetails.floor": qAsNumber });
+      query.$or.push({ "apartmentDetails.numberOfRooms": qAsNumber });
+    }
+  
+    try {
+      const apartments = await Apartment.find(query);
+      res.send({ apartments });
+    } catch (err) {
+      console.error("שגיאה בחיפוש:", err);
+      res.status(500).send({ message: 'שגיאה בשרת' });
+    }
+  });
+  
 
 module.exports = router;

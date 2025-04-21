@@ -94,3 +94,17 @@ function footer() {
       </div>
     </div>`;
 }
+
+
+//אחראי על החיפוש
+document.addEventListener("DOMContentLoaded", () => {
+  const searchIcon = document.querySelector(".search-icon");
+  const searchInput = document.getElementById("searchInput");
+
+  searchIcon.addEventListener("click", () => {
+    const query = searchInput.value.trim();
+    if (query) {
+      window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+    }
+  });
+});

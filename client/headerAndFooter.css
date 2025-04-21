@@ -45,6 +45,8 @@ body {
     display: flex;
     align-items: center;
     direction: rtl;
+
+
 }
 
 #logo img {
@@ -187,6 +189,14 @@ nav a {
     margin-left: 5px;
     height: 2%;
     margin-top: 2px;
+}
+
+header {
+    overflow: visible;
+    position: relative;
+    /* אם צריך */
+    z-index: 1000;
+    /* כדי לא להיות מוסתר */
 }
 
 /*עד כאן סרגל ניווט*/
