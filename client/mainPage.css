@@ -82,7 +82,7 @@
 /*עד כאן עיצוב הפסקה של מחפשים דירה*/
 
 /*עיצוב הקרוסלה*/
-body {
+/*body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -165,7 +165,108 @@ body {
 .slide-link:hover {
   background-color: rgba(159, 198, 207, 0.5);
   color: black;
+}*/
+
+
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  background-color: #f9f9f9;
 }
+
+.carousel-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 100px; /* הרחבה של המרחק בין הקרוסלות */
+  padding: 40px 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.carousel-section {
+  width: 600px;
+  position: relative;
+}
+
+.carousel {
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  position: relative;
+  height: 400px;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+  width: 100%;
+  height: 100%;
+}
+
+/*אחראי לכך שהתמונות יהיו מוצגות בקרוסלה אחת אחרי השניה*/
+.carousel-track > div {
+  flex: 0 0 100%;
+  height: 100%;
+  min-width: 100%;
+
+}
+
+.carousel-track img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(183, 238, 250, 0.7);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 1;
+}
+
+.carousel-btn:hover {
+  background-color: rgba(159, 198, 207, 0.8);
+}
+
+.carousel-btn.prev {
+  left: 10px;
+}
+
+.carousel-btn.next {
+  right: 10px;
+}
+
+.carousel-label {
+  position: absolute;
+  top: 50%; /* מרכז אנכי */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(183, 238, 250, 0.8);
+  padding: 10px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  z-index: 1;
+}
+
+.carousel-label:hover {
+  background-color: rgba(159, 198, 207, 0.9);
+}
+
+
 
 /*עד כאן עיצוב הקרוסלה*/
 

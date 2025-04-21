@@ -60,11 +60,11 @@
 
     <h1 style="text-align: center; font-size: 2.5em;">דירות למכירה/השכרה.</h1>
     <br />
-    <div class="container">
+    <!--<div class="container">
       <div class="slider-container slider-right">
         <div class="slider slider2">
           <div class="slide">
-            <img src="1.png" alt="דירות להשכרה">
+            <img src="3.png" alt="דירות להשכרה">
           </div>
           <div class="slide">
             <img src="2.png" alt="דירות להשכרה">
@@ -93,10 +93,37 @@
         <button class="next-btn next-btn1">&#10095;</button>
         <a href="apartmentsForSale.html" class="slide-link">דירות למכירה</a>
       </div>
+    </div>-->
+   
+    <div class="carousel-wrapper">
+      <div class="carousel-section">
+        <div class="carousel" id="carousel-sale">
+          <div class="carousel-track">
+            <div><img src="1.png" alt="דירות למכירה" /></div>
+            <div><img src="2.png" alt="דירות למכירה" /></div>
+            <div><img src="3.png" alt="דירות למכירה" /></div>
+          </div>
+          <button class="carousel-btn prev">&#10095;</button>
+          <button class="carousel-btn next">&#10094;</button>
+          <a href="apartmentsForSale.html" class="carousel-label">דירות למכירה</a>
+        </div>
+      </div>
+    
+      <div class="carousel-section">
+        <div class="carousel" id="carousel-rent">
+          <div class="carousel-track">
+            <div><img src="4.png" alt="דירות להשכרה" /></div>
+            <div><img src="5.png" alt="דירות להשכרה" /></div>
+            <div><img src="6.png" alt="דירות להשכרה" /></div>
+          </div>
+          <button class="carousel-btn prev">&#10095;</button>
+          <button class="carousel-btn next">&#10094;</button>
+          <a href="apartmentsForRent.html" class="carousel-label">דירות להשכרה</a>
+        </div>
+      </div>
     </div>
-    <br />
-    <br />
-    <br />
+  
+    <br/>
 
     <h1 style="text-align: center;">תגובות לקוחות מרוצים:</h1>
     <div class="testimonial">
@@ -135,17 +162,16 @@
     <br />
     <br />
     <br />
-
+  
   </main>
 
   <footer id="footer"></footer>
 
   <div id="divLogin"></div>
 
-  <script src="kod.js"></script>
+  <script src="carousel.js" defer></script>
   <script src="headerAndFooter.js"></script>
   <script src="registration&login.js"></script>
-
 </body>
 
 </html>
