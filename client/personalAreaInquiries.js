@@ -95,7 +95,7 @@ function displayUserInquiries(inquiries) {
         row.innerHTML = `
             <td>${index + 1}</td>
             <td>${inquiry.date}</td>
-            <td><span class="badge badge-type ${inquiry.apartment.type === 'מכירה' ? 'text-bg-success' : 'text-bg-primary'}">${inquiry.apartment.type}</span></td>
+            <td><span class="badge badge-type ${inquiry.apartment.type === 'דירה למכירה' ? 'text-bg-success' : 'text-bg-primary'}">${inquiry.apartment.type}</span></td>
             <td>${inquiry.apartment.price} ₪</td>
             <td>${inquiry.apartment.address.street}, ${inquiry.apartment.address.city}, ${inquiry.apartment.address.region}</td>
             <td style="text-align: center; vertical-align: middle;">
@@ -230,6 +230,12 @@ function displayManageInquiries(inquiries) {
 
     // Creates a table to display all provided inquiries
     const createTableForStatus = (inquiries, tableIndex) => {
+        if (inquiries.length === 0) {
+            const div = document.createElement('div');
+            div.innerHTML = `<p class="text-center text-muted">אין פניות בסטטוס הזה</p>`;
+            return div;
+        }
+
         const table = document.createElement('table');
 
         table.id = `table-${tableIndex}`;
@@ -271,7 +277,7 @@ function displayManageInquiries(inquiries) {
             row.innerHTML = `
                 <td>${index + 1}</td>
                 <td>${inquiry.date}</td>
-                <td><span class="badge badge-type ${inquiry.apartment.type === 'מכירה' ? 'text-bg-success' : 'text-bg-primary'}">${inquiry.apartment.type}</span></td>
+                <td><span class="badge badge-type ${inquiry.apartment.type === 'דירה למכירה' ? 'text-bg-success' : 'text-bg-primary'}">${inquiry.apartment.type}</span></td>
                 <td>${inquiry.apartment.price} ₪</td>
                 <td>${inquiry.apartment.address.street} ${inquiry.apartment.address.apartmentNumber}, ${inquiry.apartment.address.city}, ${inquiry.apartment.address.region}</td>
                 <td style="text-align: center; vertical-align: middle;">

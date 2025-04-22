@@ -105,7 +105,7 @@ function displayUserApartments(apartments) {
 
         row.innerHTML = `
             <td>${index + 1}</td>
-            <td><span class="badge badge-type ${apartment.type === 'מכירה' ? 'text-bg-success' : 'text-bg-primary'}">${apartment.type}</span></td>
+            <td><span class="badge badge-type ${apartment.type === 'דירה למכירה' ? 'text-bg-success' : 'text-bg-primary'}">${apartment.type}</span></td>
             <td>${apartment.price} ₪</td>
             <td>${apartment.address.street}, ${apartment.address.city}, ${apartment.address.region}</td>
             <td style="text-align: center; vertical-align: middle;">
@@ -240,6 +240,12 @@ function displayManageApartments(apartments) {
 
     // Creates a table to display all provided apartments
     const createTableForStatus = (apartments, tableIndex) => {
+        if (apartments.length === 0) {
+            const div = document.createElement('div');
+            div.innerHTML = `<p class="text-center text-muted">אין דירות בסטטוס הזה</p>`;
+            return div;
+        }
+
         const table = document.createElement('table');
 
         table.id = `table-${tableIndex}`;
@@ -279,7 +285,7 @@ function displayManageApartments(apartments) {
 
             row.innerHTML = `
                 <td>${index + 1}</td>
-                <td><span class="badge badge-type ${apartment.type === 'מכירה' ? 'text-bg-success' : 'text-bg-primary'}">${apartment.type}</span></td>
+                <td><span class="badge badge-type ${apartment.type === 'דירה למכירה' ? 'text-bg-success' : 'text-bg-primary'}">${apartment.type}</span></td>
                 <td>${apartment.price} ₪</td>
                 <td>${apartment.address.street} ${apartment.address.apartmentNumber}, ${apartment.address.city}, ${apartment.address.region}</td>
                 <td style="text-align: center; vertical-align: middle;">
