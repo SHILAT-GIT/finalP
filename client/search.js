@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
           card.innerHTML = `
             <div class="image-wrapper">
-              <span class="favorite">♡</span>
+            <span class="favorite"><i class="bi bi-bookmark" style="font-size: 1rem;"></i></span>
               <div class="swiper apartment-swiper-${index}">
                 <div class="swiper-wrapper">
                   ${imagesHtml}
@@ -53,12 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
           });
   
-          const fav = card.querySelector('.favorite');
-          fav.addEventListener('click', (e) => {
-            e.stopPropagation();
-            fav.classList.toggle('active');
-            fav.textContent = fav.classList.contains('active') ? '♥' : '♡';
-          });
   
           container.appendChild(card);
   

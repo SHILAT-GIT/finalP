@@ -1,5 +1,7 @@
+// const user = JSON.parse(localStorage.getItem("user"));
 
-document.addEventListener("DOMContentLoaded", () => {
+function displayApartmentDetails() {
+
   const urlParams = new URLSearchParams(window.location.search);
   const id = urlParams.get("id");
 
@@ -7,6 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(res => res.json())
     .then(data => {
       const apt = data.apartment;
+
+      const saved = savedApartments.some(item => item._id === apt._id);
+      
       const container = document.getElementById("apartment-details");
 
       const imagesHtml = apt.images.map((img, i) => `
@@ -15,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       container.innerHTML = `
           <div class="swiper main-swiper">
-            <span class="favorite">♡</span>
+            <span class="favorite"><i class="${saved ? "bi bi-bookmark-fill" : "bi bi-bookmark"}" id="saveIcon-${apt._id}" onclick="saveApartment('${apt._id}')" style="font-size: 1rem;"></i></span>
             <div class="swiper-wrapper">
               ${imagesHtml}
             </div>
@@ -48,23 +53,23 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       });
     });
+}
+function openImageModal(images, startIndex = 0) {
+  const modal = document.createElement("div");
+  modal.className = "image-modal";
 
-  function openImageModal(images, startIndex = 0) {
-    const modal = document.createElement("div");
-    modal.className = "image-modal";
+  const closeBtn = document.createElement("div");
+  closeBtn.className = "close-btn";
+  closeBtn.innerHTML = "&times;";
+  closeBtn.addEventListener("click", () => modal.remove());
 
-    const closeBtn = document.createElement("div");
-    closeBtn.className = "close-btn";
-    closeBtn.innerHTML = "&times;";
-    closeBtn.addEventListener("click", () => modal.remove());
-
-    const imagesHtml = images.map(img => `
+  const imagesHtml = images.map(img => `
         <div class="swiper-slide">
           <img src="${img}" />
         </div>
       `).join("");
 
-    modal.innerHTML = `
+  modal.innerHTML = `
         <div class="swiper modal-swiper">
           <div class="swiper-wrapper">
             ${imagesHtml}
@@ -75,51 +80,54 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       `;
 
-    modal.appendChild(closeBtn);
-    document.body.appendChild(modal);
+  modal.appendChild(closeBtn);
+  document.body.appendChild(modal);
 
-    const modalSwiper = new Swiper('.modal-swiper', {
-      loop: true,
-      initialSlide: startIndex,
-      pagination: { el: '.modal-swiper .swiper-pagination' },
-      navigation: {
-        nextEl: '.modal-swiper .swiper-button-next',
-        prevEl: '.modal-swiper .swiper-button-prev'
-      }
-    });
-  }
-});
-
+  const modalSwiper = new Swiper('.modal-swiper', {
+    loop: true,
+    initialSlide: startIndex,
+    pagination: { el: '.modal-swiper .swiper-pagination' },
+    navigation: {
+      nextEl: '.modal-swiper .swiper-button-next',
+      prevEl: '.modal-swiper .swiper-button-prev'
+    }
+  });
+}
 
 function makeContact(apartmentId) {
-  const userString = localStorage.getItem("user");
-
-  if (!userString) {
+  if (!user) {
     alert("עליך לבצע התחברות על מנת להשאיר פניה בהקשר לדירה באתר.");
   } else {
-    const user = JSON.parse(userString); // הפוך את ה-string לאובייקט
-    sendInquiry(user.id, apartmentId);   // שלח את user.id לפונקציה הבאה
+    sendInquiry(apartmentId);   // שלח את user.id לפונקציה הבאה
   }
 }
 
-function sendInquiry(userId, apartmentId) {
+function sendInquiry(apartmentId) {
   fetch("api/inquiries/send-inquiry", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ userId, apartmentId }) // שליחה נכונה
+    body: JSON.stringify({ userId: user.id, apartmentId })
   })
-  .then(response => {
-    if (response.status === 200) {
-      alert("הפנייה נשלחה בהצלחה!");
-    } else {
+    .then(response => {
+      if (response.status === 200) {
+        alert("הפנייה נשלחה בהצלחה!");
+      } else {
+        alert("אירעה שגיאה בשליחת הפנייה, נסו שוב מאוחר יותר.");
+      }
+    })
+    .catch((error) => {
+      console.error(error);
       alert("אירעה שגיאה בשליחת הפנייה, נסו שוב מאוחר יותר.");
-    }
-  })
-  .catch((error) => {
-    console.error(error);
-    alert("אירעה שגיאה בשליחת הפנייה, נסו שוב מאוחר יותר.");
-  });
+    });
 }
+document.addEventListener("DOMContentLoaded", async () => {
+  if (user && user.id)
+await fetchSavedApartments();
+  displayApartmentDetails();
+});
+
+
+
 
 
 

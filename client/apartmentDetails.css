@@ -72,7 +72,6 @@ body {
     top: 10px;
     left: 10px;
     /* שינוי מ right ל left */
-    font-size: 30px;
     cursor: pointer;
     z-index: 10;
     color: black;
@@ -89,11 +88,6 @@ body {
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
-}
-
-.favorite.active {
-    color: red;
-    border-color: red;
 }
 
 .contact-button {

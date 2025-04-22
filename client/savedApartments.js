@@ -41,7 +41,7 @@ function displaySavedApartments(apartments) {
 
         apartmentElement.innerHTML = `
             <h5 class="mb-0 position-absolute text-start" style="left: 20px;">
-                <span class="badge ${apartment.type === 'מכירה' ? 'text-bg-success' : 'text-bg-primary'}">${apartment.type}</span>
+                <span class="badge ${apartment.type === 'דירה למכירה' ? 'text-bg-success' : 'text-bg-primary'}">${apartment.type}</span>
             </h5>
     
             <div class="col-md-4 text-center m-auto" >
@@ -82,10 +82,10 @@ function displaySavedApartments(apartments) {
                 </p>
             
                 <div class="d-flex justify-content-between mt-2">
-                    <button class="btn btn-primary contact-btn" onclick="sendInquiry('${apartment.id}')">
+                    <button class="btn btn-primary contact-btn" onclick="sendInquiry('${apartment._id}')">
                         צרו איתי קשר    
                     </button>
-                    <button class="btn save-btn" onclick="removeSaved('${apartment.id}')">
+                    <button class="btn save-btn" onclick="removeSaved('${apartment._id}')">
                         <i class="bi bi-bookmark-fill" style="font-size: 1.5rem;"></i>
                     </button>
                 </div>

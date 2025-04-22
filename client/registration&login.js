@@ -268,6 +268,7 @@ function logout() {
     localStorage.removeItem("user");
     updateAuthUI();
     alert("התנתקת מהמערכת.");
+    window.location.reload();
     if (window.location.pathname.startsWith("/personalArea") ||
       window.location.pathname.startsWith("/personalAreaApartments") ||
       window.location.pathname.startsWith("/personalAreaInquiries") ||

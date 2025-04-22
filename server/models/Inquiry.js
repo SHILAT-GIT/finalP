@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const inquirySchema = new mongoose.Schema({
-    date: Date,
+    date: String,
     apartment: { type: mongoose.Schema.Types.ObjectId, ref: 'Apartment' },
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     status: {

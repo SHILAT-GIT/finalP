@@ -44,6 +44,28 @@ router.post('/remove-saved-apartment', async (req, res) => {
     }
 });
 
+//הוספת דירה חרשימת הדירות השמורות
+router.post('/add-saved-apartment', async (req, res) => {
+    const { userId, apartmentId } = req.body;
+
+    try {
+        const user = await User.findByIdAndUpdate(
+            userId,
+            { $push: { savedApartments: apartmentId } },
+            { new: true }
+        );
+
+        if (!user) {
+            return res.status(404).send({ message: 'User not found' });
+        }
+
+        res.status(200).send({ message: 'Apartment added from apartments successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ message: 'Server error. Please try again later.' });
+    }
+});
+
 // Get user profile
 router.get('/profile/:id', async (req, res) => {
     const userId = req.params.id;
