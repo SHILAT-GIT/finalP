@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <p><b>חדרים:</b> ${apt.apartmentDetails.numberOfRooms}</p>
           <p><b>קומה:</b> ${apt.apartmentDetails.floor}</p>
           <p><b>גודל:</b> ${apt.apartmentDetails.sizeInSquareMeters} מ"ר</p>
-          <button class="contact-button">צרו איתי קשר</button>
+          <button class="contact-button" onclick="makeContact('${apt._id}')">צרו איתי קשר</button>
         `;
 
       const swiper = new Swiper('.main-swiper', {
@@ -89,5 +89,37 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+
+function makeContact(apartmentId) {
+  const userString = localStorage.getItem("user");
+
+  if (!userString) {
+    alert("עליך לבצע התחברות על מנת להשאיר פניה בהקשר לדירה באתר.");
+  } else {
+    const user = JSON.parse(userString); // הפוך את ה-string לאובייקט
+    sendInquiry(user.id, apartmentId);   // שלח את user.id לפונקציה הבאה
+  }
+}
+
+function sendInquiry(userId, apartmentId) {
+  fetch("api/inquiries/send-inquiry", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ userId, apartmentId }) // שליחה נכונה
+  })
+  .then(response => {
+    if (response.status === 200) {
+      alert("הפנייה נשלחה בהצלחה!");
+    } else {
+      alert("אירעה שגיאה בשליחת הפנייה, נסו שוב מאוחר יותר.");
+    }
+  })
+  .catch((error) => {
+    console.error(error);
+    alert("אירעה שגיאה בשליחת הפנייה, נסו שוב מאוחר יותר.");
+  });
+}
+
 
 

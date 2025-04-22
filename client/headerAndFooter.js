@@ -83,7 +83,7 @@ function footer() {
         <p><b>פרטי יצירת קשר:</b></p>
         <p>כתובת: תל אביב, רחוב אלנבי 123</p>
         <p>טלפון: 03-1234567</p>
-        <p>DirotIsrael@gmail.com :אימייל</p>
+        <p>אימייל: DirotIsrael@gmail.com</p>
       </div>
       <div class="social-icons">
         <p><b>בקרו אותנו ברשתות החברתיות:</b></p>
