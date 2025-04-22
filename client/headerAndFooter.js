@@ -64,8 +64,8 @@ function header() {
           <a href="apartmentsForRent.html">דירות להשכרה</a>
         </div>
       </li>
-      <li><a href="newApartment.html">פרסם דירה +</a></li>
-      <li><a href="newInquiry.html">השאר פניה +</a></li>
+      <li><a href="newApartment.html">+ פרסם דירה</a></li>
+      <li><a href="newInquiry.html">+ השאר פניה</a></li>
       <li class="search-container" style="margin-top: 3.5px;">
         <input type="text" id="searchInput" placeholder="חפש...">
         <i class="fas fa-search search-icon"></i>

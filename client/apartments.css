@@ -1,103 +1,102 @@
 body {
-    direction: rtl;
-    font-family: Arial;
-    margin: 0;
-    padding: 0;
+  direction: rtl;
+  font-family: Arial;
+  margin: 0;
+  padding: 0;
 }
 
-h1{
+h1 {
   margin-right: 15px;
 }
 
 .apartment-card {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px 0;
-    cursor: pointer;
-    max-width: 400px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0;
+  cursor: pointer;
+  max-width: 400px;
 }
 
 .image-wrapper {
-    position: relative;
+  position: relative;
 }
 
 .image-wrapper img {
-    width: 100%;
-    border-radius: 10px;
+  width: 100%;
+  border-radius: 10px;
 }
 
 .favorite {
   position: absolute;
   top: 10px;
-  right: 10px;
-  font-size: 24px;
+  left: 10px; /* שינוי מ right ל left */
+  font-size: 30px;
   cursor: pointer;
   z-index: 10;
-  color: #ccc;
+  color: black; /* צבע הלב */
+  background-color: white; /* רקע לבן */
+  border: 1px solid black; /* מסגרת שחורה ללב */
+  border-radius: 50%; /* צורת עיגול */
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
 }
 
 .favorite.active {
-    color: red;
+  color: red;
+  border-color: red;
 }
 
+
 .carousel-img {
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 10px;
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 /*עיצוב בעמוד דירות שיהיו בשורה*/
 #apartments-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    margin: 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin: 15px;
 }
 
 
 /* --- Swiper קרוסלה --- */
 .swiper {
-    width: 100%;
-    height: 200px;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 10px;
-  }
-  
-  .swiper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  #apartments-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-  }
-  
-  .apartment-card {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 10px;
-    background-color: white;
-    cursor: pointer;
-    transition: transform 0.2s;
-  }
-  
-  .apartment-card:hover {
-    transform: scale(1.02);
-  }
-  
-  .favorite {
-    font-size: 22px;
-    color: #ccc;
-    cursor: pointer;
-    float: left;
-  }
-  
-  .favorite.active {
-    color: red;
-  }
-  
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.swiper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#apartments-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.apartment-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: white;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.apartment-card:hover {
+  transform: scale(1.02);
+}

@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let currentIndex = 0;
 
     const updateCarousel = () => {
-      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      track.style.transform = `translateX(${currentIndex * 100}%)`;
     };
 
     nextBtn.addEventListener('click', () => {

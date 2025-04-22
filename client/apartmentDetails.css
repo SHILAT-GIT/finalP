@@ -2,7 +2,7 @@ body {
     direction: rtl;
     font-family: Arial;
     margin: 0;
-    
+
     background-color: #f7f7f7;
 }
 
@@ -37,7 +37,7 @@ body {
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(0,0,0,0.8);
+    background: rgba(0, 0, 0, 0.8);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,4 +65,51 @@ body {
     color: white;
     cursor: pointer;
     z-index: 1001;
+}
+
+.favorite {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    /* שינוי מ right ל left */
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 10;
+    color: black;
+    /* צבע הלב */
+    background-color: white;
+    /* רקע לבן */
+    border: 1px solid black;
+    /* מסגרת שחורה ללב */
+    border-radius: 50%;
+    /* צורת עיגול */
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.favorite.active {
+    color: red;
+    border-color: red;
+}
+
+.contact-button {
+    background-color: rgb(157, 217, 239);
+    color: black;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 5px;
+    margin-right: 41%;
+}
+
+.contact-button:hover {
+    background-color: rgb(90, 179, 212);
+
 }
