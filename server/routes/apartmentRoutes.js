@@ -140,6 +140,8 @@ router.get('/search', async (req, res) => {
     if (isNumber) {
       query.$or.push({ "apartmentDetails.floor": qAsNumber });
       query.$or.push({ "apartmentDetails.numberOfRooms": qAsNumber });
+      query.$or.push({ "apartmentDetails.sizeInSquareMeters": qAsNumber });
+
     }
   
     try {

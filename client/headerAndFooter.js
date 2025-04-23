@@ -67,7 +67,7 @@ function header() {
       <li><a href="newApartment.html">+ פרסם דירה</a></li>
       <li><a href="newInquiry.html">+ השאר פניה</a></li>
       <li class="search-container" style="margin-top: 3.5px;">
-        <input type="text" id="searchInput" placeholder="חפש...">
+        <input type="text" id="searchInput" placeholder="חפש לפי: עיר / רחוב / קומה / מטר רבוע / מספר חדרים.">
         <i class="fas fa-search search-icon"></i>
       </li>
       <li style="float: left; display: none;" id="iconUser"><a href="personalArea.html" id="iconPerson"><i
