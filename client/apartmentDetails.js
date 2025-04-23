@@ -11,7 +11,7 @@ function displayApartmentDetails() {
       const apt = data.apartment;
 
       const saved = savedApartments.some(item => item._id === apt._id);
-      
+
       const container = document.getElementById("apartment-details");
 
       const imagesHtml = apt.images.map((img, i) => `
@@ -29,7 +29,7 @@ function displayApartmentDetails() {
             <div class="swiper-pagination"></div>
           </div>
           <h2>${apt.price} ₪</h2>
-          <p><strong>${apt.type}</strong> - ${apt.description}</p>
+          <p><strong>${apt.type}</strong> ${apt.description ? "-" + apt.description : ""}</p>
           <p><b>כתובת:</b> ${apt.address.street}, ${apt.address.city}</p>
           <p><b>חדרים:</b> ${apt.apartmentDetails.numberOfRooms}</p>
           <p><b>קומה:</b> ${apt.apartmentDetails.floor}</p>
@@ -122,7 +122,7 @@ function sendInquiry(apartmentId) {
 }
 document.addEventListener("DOMContentLoaded", async () => {
   if (user && user.id)
-await fetchSavedApartments();
+    await fetchSavedApartments();
   displayApartmentDetails();
 });
 

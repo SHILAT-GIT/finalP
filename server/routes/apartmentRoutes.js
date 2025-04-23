@@ -4,9 +4,7 @@ const router = express.Router();
 const Apartment = require('../models/Apartment');
 const User = require('../models/User');
 
-
-
-
+const upload = require('../uploadImages');
 
 // Fetch all apartments
 router.get('/all-apartments', async (req, res) => {
@@ -121,37 +119,72 @@ router.get('/for-sale', async (_, res) => {
 //חיפוש
 router.get('/search', async (req, res) => {
     const { q } = req.query;
-  
+
     if (!q) return res.send({ apartments: [] });
-  
+
     const searchRegex = new RegExp(q, 'i');
     const qAsNumber = Number(q);
     const isNumber = !isNaN(qAsNumber);
-  
+
     let query = {
-      status: "מאושר",
-      $or: [
-        { type: searchRegex },
-        { "address.city": searchRegex },
-        { "address.street": searchRegex }
-      ]
+        status: "מאושר",
+        $or: [
+            { type: searchRegex },
+            { "address.city": searchRegex },
+            { "address.street": searchRegex }
+        ]
     };
-  
+
     if (isNumber) {
-      query.$or.push({ "apartmentDetails.floor": qAsNumber });
-      query.$or.push({ "apartmentDetails.numberOfRooms": qAsNumber });
-      query.$or.push({ "apartmentDetails.sizeInSquareMeters": qAsNumber });
+        query.$or.push({ "apartmentDetails.floor": qAsNumber });
+        query.$or.push({ "apartmentDetails.numberOfRooms": qAsNumber });
+        query.$or.push({ "apartmentDetails.sizeInSquareMeters": qAsNumber });
 
     }
-  
+
     try {
-      const apartments = await Apartment.find(query);
-      res.send({ apartments });
+        const apartments = await Apartment.find(query);
+        res.send({ apartments });
     } catch (err) {
-      console.error("שגיאה בחיפוש:", err);
-      res.status(500).send({ message: 'שגיאה בשרת' });
+        console.error("שגיאה בחיפוש:", err);
+        res.status(500).send({ message: 'שגיאה בשרת' });
     }
-  });
-  
+});
+
+
+// הוספת דירה
+router.post("/add-apartment", upload.array("images"), async (req, res) => {
+    try {
+console.log(req.body);
+
+        const images = req.files.map((file) => `/uploads/${file.filename}`);
+
+        const newApartment = new Apartment({
+            owner: req.body.userId, // לוודא שיש req.user (ראה הערה למטה)
+            type: req.body.type,
+            price: req.body.price,
+            address: {
+                apartmentNumber: req.body.apartmentNumber,
+                street: req.body.street,
+                city: req.body.city,
+                region: req.body.region,
+            },
+            apartmentDetails: {
+                sizeInSquareMeters: req.body.sizeInSquareMeters,
+                numberOfRooms: req.body.numberOfRooms,
+                floor: req.body.floor,
+            },
+            description: req.body.description,
+            images,
+            status: "ממתין לאישור",
+        });
+
+        await newApartment.save();
+        res.status(201).send({ message: "דירה נוספה בהצלחה" });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send({ message: "שגיאה בהוספת דירה" });
+    }
+});
 
 module.exports = router;

@@ -308,15 +308,15 @@ function displayManageInquiries(inquiries) {
                 <td>
                     <div style="display: flex; justify-content: ${inquiry.status === 'התקבל' ? 'space-evenly' : 'center'};">
                         ${inquiry.status !== "בטיפול"
-                    ? `<i class="bi bi-pencil-square icon-button text-primary" onclick="changeInquiryStatus(${inquiry._id}, 'בטיפול')"></i>`
+                    ? `<i class="bi bi-pencil-square icon-button text-primary" onclick="changeInquiryStatus('${inquiry._id}', 'בטיפול')"></i>`
                     : ""}
         
                         ${inquiry.status !== "טופל"
-                    ? `<i class="bi bi-check-circle icon-button text-success" onclick="changeInquiryStatus(${inquiry._id}, 'טופל')"></i>`
+                    ? `<i class="bi bi-check-circle icon-button text-success" onclick="changeInquiryStatus('${inquiry._id}', 'טופל')"></i>`
                     : ""}
                     </div>
                 </td>
-                ${tableIndex === 3 ? `<td><i class="bi bi-trash-fill icon-button" onclick="deleteInquiry(${inquiry._id})"></i></td>` : ''}
+                ${tableIndex === 3 ? `<td><i class="bi bi-trash-fill icon-button" onclick="deleteInquiry('${inquiry._id}')"></i></td>` : ''}
                 <td><i class="bi bi-chevron-down icon-toggle" onclick="toggleDescription(${index}, ${tableIndex})"></i></td>
             `;
 

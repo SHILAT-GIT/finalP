@@ -316,15 +316,15 @@ function displayManageApartments(apartments) {
                 <td>
                     <div style="display: flex; justify-content: ${apartment.status === 'ממתין לאישור' ? 'space-evenly' : 'center'};">
                         ${apartment.status !== "מאושר"
-                    ? `<i class="bi bi-check-circle icon-button text-success" onclick="changeApartmentStatus(${apartment._id}, 'מאושר')"></i>`
+                    ? `<i class="bi bi-check-circle icon-button text-success" onclick="changeApartmentStatus('${apartment._id}', 'מאושר')"></i>`
                     : ""}
         
                         ${apartment.status !== "נדחה"
-                    ? `<i class="bi bi-dash-circle icon-button text-danger" onclick="changeApartmentStatus(${apartment._id}, 'נדחה')"></i>`
+                    ? `<i class="bi bi-dash-circle icon-button text-danger" onclick="changeApartmentStatus('${apartment._id}', 'נדחה')"></i>`
                     : ""}
                     </div>
                 </td>
-                ${tableIndex === 3 ? `<td><i class="bi bi-trash-fill icon-button" onclick="deleteApartment(${apartment._id})"></i></td>` : ''}
+                ${tableIndex === 3 ? `<td><i class="bi bi-trash-fill icon-button" onclick="deleteApartment('${apartment._id}')"></i></td>` : ''}
                 <td><i class="bi bi-chevron-down icon-toggle" onclick="toggleDescription(${index}, ${tableIndex})"></i></td>
             `;
 
