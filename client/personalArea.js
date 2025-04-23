@@ -39,7 +39,7 @@ function getUserProfile() {
         })
         .catch(error => {
             console.error(error);
-            console.error("אירעה שגיאה בהצגת הדירות, נסו שוב מאוחר יותר");
+            console.error("אירעה שגיאה בהצגת פרטי המשתמש, נסו שוב מאוחר יותר");
         });
 }
 
@@ -88,6 +88,8 @@ function updateProfile(event, submitButton) {
         setTimeout(() => {
             form.reset();
             form.classList.remove('was-validated');
+            
+            getUserProfile();
         }, 10000);
 
     }
@@ -147,6 +149,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         form.reset();
         form.classList.remove('was-validated');
+
+        getUserProfile();
     });
 
     // Listens for a click on the profile update button and calls the corresponding function to update the profile.
