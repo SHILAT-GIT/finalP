@@ -16,6 +16,7 @@ connectdb();
 
 // הגדרת נתיב לתיקיית הסטטיים
 app.use(express.static(path.join(__dirname, '..', 'client')));
+app.use("/uploads", express.static(path.join(__dirname, "../client/uploads"))); // תיקיית uploads בתוך client
 
 const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -28,11 +29,14 @@ app.get('/', (req, res) => {
 const userRoutes = require('./routes/userRoutes');
 const apartmentRoutes = require('./routes/apartmentRoutes');
 const inquiryRoutes = require('./routes/inquiryRoutes');
+const generalinquiryRoutes = require('./routes/generalinquiryRoutes');
 
 //  חיבור הראוטרים
 app.use('/api/users', userRoutes);
 app.use('/api/apartments', apartmentRoutes);
 app.use('/api/inquiries', inquiryRoutes);
+app.use('/api/generalInquiries', generalinquiryRoutes);
+
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

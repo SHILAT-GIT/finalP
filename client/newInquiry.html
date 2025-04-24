@@ -17,12 +17,12 @@
 
     <div class="contact-form">
       <h2>השארת פנייה</h2>
-      <input class="inputInquiry" type="text" id="user" placeholder="שם" />
-      <input class="inputInquiry" type="text" id="phone" placeholder="מספר טלפון" />
-      <input class="inputInquiry" type="email" id="email" placeholder="כתובת מייל" >
-      <div><textarea id="message" placeholder="כתוב את פנייתך כאן..."></textarea></div><br/>
-      <button id="btnInquiry" onclick="submitRequest()">שלח פנייה</button>
+      <input class="inputInquiry" type="text" id="name" placeholder="שם" name="name" />
+      <input class="inputInquiry" type="text" id="phone" placeholder="מספר טלפון" name="phone" />
+      <input class="inputInquiry" type="email" id="email" placeholder="כתובת מייל" name="email">
+      <div><textarea id="message" placeholder="כתוב את פנייתך כאן..." name="description"></textarea></div><br/>
       <div id="response" class="message"></div>
+      <button id="btnInquiry" onclick="submitRequest()">שלח פנייה</button>
     </div>
 
   </main>
