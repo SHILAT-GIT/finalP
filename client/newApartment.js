@@ -67,6 +67,22 @@ const form = document.getElementById("apartmentForm");
       form.submit();
     }
   });*/
+ //פונקציה הדואגת למלא את שדה הסוג דירה בהתאם לרישור ממנו הגענו לעמוד
+  window.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const type = urlParams.get('type');
+
+    if (type) {
+      const select = document.querySelector('select[name="type"]');
+      const optionToSelect = Array.from(select.options).find(option => option.value === type);
+      if (optionToSelect) {
+        optionToSelect.selected = true;
+      }
+    }
+  });
+
+
+  
   const user = JSON.parse(localStorage.getItem("user"));
 
   if (!user) {
