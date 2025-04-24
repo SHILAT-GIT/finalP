@@ -10,27 +10,16 @@ body {
 
 .my-btn {
     background-color: white;
-    /* צבע רקע */
     border: none;
-    /* הסרת גבול */
     color: black;
-    /* צבע טקסט */
     padding: 8px 20px;
-    /* ריווח פנימי */
     text-align: center;
-    /* יישור טקסט למרכז */
     text-decoration: none;
-    /* הסרת קו תחתון */
     display: inline-block;
-    /* הצגה כאלמנט בלוק-אינליין */
     font-size: 16px;
-    /* גודל גופן */
     border-radius: 25px;
-    /* עיגול פינות */
     cursor: pointer;
-    /* סמן עכבר */
     transition: background-color 0.3s ease;
-    /* מעבר חלק בצבע רקע */
     margin-left: 5px;
 }
 
@@ -165,12 +154,10 @@ nav a {
     color: rgb(243, 242, 242);
     cursor: pointer;
     transition: color 0.3s ease;
-    /* הוספת מעבר חלק */
 }
 
 .search-container i:hover {
     color: rgb(164, 210, 244);
-    /* צבע במעבר עכבר */
 }
 
 #searchInput {
@@ -199,7 +186,6 @@ nav a {
 header {
     overflow: visible;
     position: relative;
-    /* אם צריך */
     z-index: 1000;
     /* כדי לא להיות מוסתר */
 }
@@ -228,7 +214,6 @@ footer {
 .contact-info,
 .social-icons {
     margin-bottom: 20px;
-    /* מרווח בין החלקים */
 }
 
 .social-icons p,

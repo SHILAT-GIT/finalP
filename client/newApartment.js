@@ -1,72 +1,4 @@
-/*
-const form = document.getElementById("apartmentForm");
 
-  function validateDigitsOnly(input) {
-    input.value = input.value.replace(/[^0-9]/g, "");
-  }
-
-  function validatePrice(input) {
-    input.value = input.value.replace(/[^0-9,]/g, "");
-  }
-
-  function validateDecimal(input) {
-    input.value = input.value.replace(/[^0-9.]/g, "");
-  }
-
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    let isValid = true;
-
-    const type = form.type.value;
-    const price = form.price.value;
-    const apartmentNumber = form.apartmentNumber.value;
-    const region = form.region.value;
-    const size = form.sizeInSquareMeters.value;
-    const rooms = form.numberOfRooms.value;
-    const floor = form.floor.value;
-
-    // Check required selects
-    if (!type) {
-      isValid = false;
-      document.getElementById("typeError").style.display = "block";
-    } else document.getElementById("typeError").style.display = "none";
-
-    if (!region) {
-      isValid = false;
-      document.getElementById("regionError").style.display = "block";
-    } else document.getElementById("regionError").style.display = "none";
-
-    if (!/^[0-9,]+$/.test(price)) {
-      isValid = false;
-      document.getElementById("priceError").style.display = "block";
-    } else document.getElementById("priceError").style.display = "none";
-
-    if (!/^\d+$/.test(apartmentNumber)) {
-      isValid = false;
-      document.getElementById("aptNumError").style.display = "block";
-    } else document.getElementById("aptNumError").style.display = "none";
-
-    if (!/^\d+(\.\d+)?$/.test(size)) {
-      isValid = false;
-      document.getElementById("sizeError").style.display = "block";
-    } else document.getElementById("sizeError").style.display = "none";
-
-    if (!/^\d+(\.\d+)?$/.test(rooms)) {
-      isValid = false;
-      document.getElementById("roomsError").style.display = "block";
-    } else document.getElementById("roomsError").style.display = "none";
-
-    if (!/^\d+$/.test(floor)) {
-      isValid = false;
-      document.getElementById("floorError").style.display = "block";
-    } else document.getElementById("floorError").style.display = "none";
-
-    if (isValid) {
-      // שליחת הטופס אם הכול תקין
-      form.submit();
-    }
-  });*/
  //פונקציה הדואגת למלא את שדה הסוג דירה בהתאם לרישור ממנו הגענו לעמוד
   window.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -154,11 +86,6 @@ const form = document.getElementById("apartmentForm");
         }
       });
   
-  
-      /*if (isValid) {
-        // כאן אפשר לשלוח את הטופס אם הכל תקין
-        form.submit();
-      }*/
       if (isValid) {
         const formData = new FormData(form);
         formData.append("userId", user.id);

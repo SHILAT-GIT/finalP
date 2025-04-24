@@ -14,11 +14,6 @@ function clearErrors() {
   document.getElementById("registerError").textContent = "";
 }
 
-/*function clearInputs(modalId) {
-  const inputs = document.querySelectorAll(`#${modalId} input`);
-  inputs.forEach(input => input.value = '');
-  
-}*/
 
 function clearInputs(modalId) {
   const modal = document.getElementById(modalId);
