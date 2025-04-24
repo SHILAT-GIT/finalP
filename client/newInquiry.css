@@ -61,7 +61,6 @@ body {
 .contact-form textarea:focus {
     outline: none;
     border-color: #51a4fd;
-    /* צבע акцент при фокусе */
     box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
 }
 
@@ -80,26 +79,6 @@ body {
     background-color: rgb(90, 179, 212);
 }
 
-.contact-form button#btnInquiry:focus {
-    outline: none;
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
-}
-
-/*.contact-form .message {
-    margin-top: 20px;
-    padding: 15px;
-    border-radius: 8px;
-    font-weight: bold;
-}*/
-
-/*.contact-form .message.message-success {
-    background-color: #d4edda !important;
-    color: #155724 !important;
-    border: 1px solid #c3e6cb !important;
-}*/
-
 .contact-form .message.message-error {
-    /*background-color: #f8d7da !important;*/
     color: red !important;
-    /*border: 1px solid #f5c6cb !important;*/
 }
