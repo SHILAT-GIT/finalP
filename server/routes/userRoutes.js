@@ -115,6 +115,20 @@ router.delete('/delete-account/:id', async (req, res) => {
             return res.status(404).send({ message: 'User not found' });
         }
 
+        const userApartments = await Apartment.find({ owner: userId });
+        const apartmentIds = userApartments.map(a => a._id);
+    
+        await Inquiry.deleteMany({ apartment: { $in: apartmentIds } });
+    
+        await Apartment.deleteMany({ owner: userId });
+    
+        await User.updateMany(
+          { savedApartments: { $in: apartmentIds } },
+          { $pull: { savedApartments: { $in: apartmentIds } } }
+        );
+    
+        await Inquiry.deleteMany({ user: userId });
+
         res.status(200).send({ message: 'Account successfully deleted' });
     } catch (error) {
         console.error(error);

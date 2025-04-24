@@ -14,16 +14,12 @@ function adjustForAdmin() {
             sentCard.textContent = 'ניהול פניות';
         }
 
-        const savedCard = document.querySelector('.col-md-4:nth-child(3)');
-        if (savedCard) {
-            savedCard.remove();
+        const savedCard = document.querySelector('.col-md-4:nth-child(3) a.card-link');
+        const savedCardContent = document.querySelector('.col-md-4:nth-child(3) .custom-card .card-content h3');
+        if (savedCard && savedCardContent) {
+            savedCard.href = "generalInquiries.html";
+            savedCardContent.textContent = 'ניהול פניות כלליות';
         }
-
-        const remainingCards = document.querySelectorAll('.col-md-4');
-        remainingCards.forEach(card => {
-            card.classList.remove('col-md-4');
-            card.classList.add('col-md-6');
-        });
     }
 }
 
@@ -88,7 +84,7 @@ function updateProfile(event, submitButton) {
         setTimeout(() => {
             form.reset();
             form.classList.remove('was-validated');
-            
+
             getUserProfile();
         }, 10000);
 

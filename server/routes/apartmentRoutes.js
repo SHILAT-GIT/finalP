@@ -3,6 +3,7 @@ const router = express.Router();
 
 const Apartment = require('../models/Apartment');
 const User = require('../models/User');
+const Inquiry = require('../models/Inquiry');
 
 const upload = require('../uploadImages');
 
@@ -68,6 +69,13 @@ router.delete('/delete-apartment/:id', async (req, res) => {
         if (!apartment) {
             return res.status(404).send({ message: 'Apartment not found' });
         }
+
+        await Inquiry.deleteMany({ apartment: apartmentId });
+
+        await User.updateMany(
+            { savedApartments: apartmentId },
+            { $pull: { savedApartments: apartmentId } }
+        );
 
         res.status(200).send({ message: 'Apartment successfully deleted' });
     } catch (error) {
@@ -155,8 +163,6 @@ router.get('/search', async (req, res) => {
 // הוספת דירה
 router.post("/add-apartment", upload.array("images"), async (req, res) => {
     try {
-console.log(req.body);
-
         const images = req.files.map((file) => `/uploads/${file.filename}`);
 
         const newApartment = new Apartment({
