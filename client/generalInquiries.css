@@ -1,0 +1,165 @@
+/* navbar */
+.header {
+    padding:  15px 5px !important;
+}
+
+.header #titelMainPage{
+    margin-top: 8px !important;
+}
+
+#titelMainPage {
+    font-weight: bold !important;
+}
+
+ul{
+    line-height: 1.15rem !important;
+}
+
+#iconPerson {
+    height: auto !important;
+}
+
+.btn{
+    line-height: normal !important;
+}
+/* end - navbar */
+
+.container {
+    direction: rtl;
+    width: 98% !important;
+    max-width: 900px !important;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    padding: 10px;
+    text-align: center;
+}
+
+.table th {
+    background-color: #38444d;
+    color: white;
+}
+
+.table tr.even>td {
+    background-color: #e1f5fb !important;
+}
+
+.table tr.even.has-description {
+    border-color: #e1f5fb !important;
+}
+
+.table tr.odd>td {
+    background-color: white !important;
+}
+
+.table tr.odd.has-description {
+    border-color: white !important;
+}
+
+.table th:first-child {
+    border-top-right-radius: 10px !important;
+}
+
+.table th:last-child {
+    border-top-left-radius: 10px !important;
+}
+
+.table tr:nth-last-child(2) {
+    border-color: white;
+}
+
+.table tr:last-child {
+    border-color: white;
+}
+
+.table tr:last-child td:first-child {
+    border-bottom-right-radius: 10px !important;
+}
+
+.table tr:last-child td:last-child {
+    border-bottom-left-radius: 10px !important;
+}
+
+.badge-type {
+    border-radius: 60px 30px;
+    width: 80px;
+}
+
+.badge-status {
+    border-radius: 30px;
+}
+
+.badge-accepted {
+    background-color: #FFF9C4;
+    color: #854D0E;
+}
+
+.badge-processing {
+    background-color: #BBDEFB;
+    color: #1565C0;
+}
+
+.badge-done {
+    background-color: #C8E6C9;
+    color: #2E7D32;
+}
+
+.table img {
+    cursor: pointer;
+}
+
+.icon-button,
+.icon-toggle {
+    cursor: pointer;
+}
+
+.inquiry-description {
+    display: none;
+    padding: 10px;
+    background-color: #f4f4f4;
+    margin-top: 5px;
+    border-top: 1px solid #ddd;
+}
+
+.inquiry-description>td {
+    text-align: start;
+}
+
+.accordion-button::after {
+    margin-right: auto;
+    margin-left: 0 !important;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #e1f5fb !important;
+    border-color: #e1f5fb !important;
+}
+
+.accordion-button:focus {
+    box-shadow: none !important;
+}
+
+.accordion-button:hover.collapsed {
+    box-shadow: 0 0 0 0.25rem #e1f5fb !important;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+table .carousel-control-prev {
+    left: -20px;
+}
+
+table .carousel-control-next {
+    right: -20px;
+}
