@@ -14,7 +14,7 @@
 
   <main id="contentPage">
     <form id="apartmentForm" enctype="multipart/form-data" novalidate>
-      <label>סוג דירה:
+      <label><b>סוג דירה:</b>
         <select name="type" required>
           <option value="">בחר סוג</option>
           <option value="דירה למכירה">דירה למכירה</option>
@@ -23,31 +23,31 @@
         <div class="error" id="typeError">נא לבחור סוג דירה</div>
       </label>
     
-      <label>מחיר:
+      <label><b>מחיר:</b>
         <input type="text" name="price" required oninput="validatePrice(this)">
         <div class="error" id="priceError">יש להזין מחיר עם ספרות ופסיקים בלבד (לדוג' 1,000,000)</div>
       </label>
     
       <fieldset>
-        <legend>כתובת</legend>
+        <legend style="font-size: 1.2em;">כתובת</legend>
     
-        <label>מספר דירה:
+        <label><b>מספר דירה:</b>
           <input type="text" name="apartmentNumber" required oninput="validateDigitsOnly(this)">
           <div class="error" id="aptNumError">יש להזין ספרות בלבד</div>
         </label>
     
-        <label>רחוב:
+        <label><b>רחוב:</b>
           <input type="text" name="street" required>
           <div class="error" id="streetError">נא להזין את שם הרחוב</div>
         </label>
         
-        <label>עיר:
+        <label><b>עיר:</b>
           <input type="text" name="city" required>
           <div class="error" id="cityError">נא להזין את שם העיר</div>
         </label>
         
     
-        <label>אזור:
+        <label><b>אזור:</b>
           <select name="region" required>
             <option value="">בחר אזור</option>
             <option>צפון</option>
@@ -63,30 +63,30 @@
       </fieldset>
     
       <fieldset>
-        <legend>פרטי דירה</legend>
+        <legend style="font-size: 1.2em;">פרטי דירה</legend>
     
-        <label>מ"ר:
+        <label><b>מ"ר:</b>
           <input type="text" name="sizeInSquareMeters" required oninput="validateDecimal(this)">
           <div class="error" id="sizeError">יש להזין מספר עם נקודה בלבד</div>
         </label>
     
-        <label>מספר חדרים:
+        <label><b>מספר חדרים:</b>
           <input type="text" name="numberOfRooms" required oninput="validateDecimal(this)">
           <div class="error" id="roomsError">יש להזין מספר עם נקודה בלבד</div>
         </label>
     
-        <label>קומה:
+        <label><b>קומה:</b>
           <input type="text" name="floor" required>
           <div class="error" id="floorError">נא להזין את מספר או תיאור הקומה</div>
         </label>
         
       </fieldset>
     
-      <label>תיאור:
+      <label><b>תיאור:</b>
         <textarea name="description" rows="4"></textarea>
       </label>
     
-      <label>תמונות:
+      <label><b>תמונות:</b>
         <div class="file-upload-wrapper">
           <input type="file" name="images" id="images" accept="image/*" multiple required>
           <div class="error" id="imagesError">נא להעלות לפחות תמונה אחת</div>
