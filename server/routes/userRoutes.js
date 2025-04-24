@@ -76,7 +76,24 @@ router.get('/profile/:id', async (req, res) => {
             return res.status(404).send({ message: 'User not found' });
         }
 
-        res.status(200).send({ message: 'Account successfully deleted', user: user });
+        res.status(200).send({ message: 'User profile retrieved successfully', user: user });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ message: 'Server error. Please try again later.' });
+    }
+});
+
+// Get user role
+router.get('/role/:id', async (req, res) => {
+    const userId = req.params.id;
+
+    try {
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).send({ message: 'User not found' });
+        }
+
+        res.status(200).send({ message: 'User role retrieved successfully', role: user.role });
     } catch (error) {
         console.error(error);
         res.status(500).send({ message: 'Server error. Please try again later.' });

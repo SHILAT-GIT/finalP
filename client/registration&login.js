@@ -132,7 +132,6 @@ async function validateLogin() {
       // localStorage.setItem("user", JSON.stringify(result.user));
       localStorage.setItem("user", JSON.stringify({
         id: result.user.id,
-        role: result.user.role
       }));
       //הוספה להפעלת הפונקציה שמשנה כפתורים בביצוע התחברות
       updateAuthUI();

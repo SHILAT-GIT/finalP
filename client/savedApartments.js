@@ -1,6 +1,3 @@
-// Fetching logged-in user's data (ID and role) from localStorage.
-let user = JSON.parse(localStorage.getItem('user'));
-
 // Fetches the user's saved apartments from the database.
 function fetchData() {
     if (!user || !user.id) {
@@ -157,7 +154,10 @@ function sendInquiry(apartmentId) {
 }
 
 // This code runs as soon as the page is fully loaded. 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+    // Calls a function to fetch the user's role and updates the `user` variable
+    await getUserRole();
+
     // Calls a function to fetch the user's saved apartments from the database.
     fetchData();
 });

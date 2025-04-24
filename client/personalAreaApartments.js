@@ -1,6 +1,3 @@
-// Fetching logged-in user's data (ID and role) from localStorage.
-let user = JSON.parse(localStorage.getItem('user'));
-
 // Checks if the logged-in user is an admin, and updates the title accordingly
 function adjustForAdmin() {
     if (user && user.role === 'admin') {
@@ -459,7 +456,10 @@ function showToast(message, type) {
 }
 
 // This code runs as soon as the page is fully loaded. 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+    // Calls a function to fetch the user's role and updates the `user` variable
+    await getUserRole();
+
     // Calls a function to check if the logged-in user is an admin, and adjusts the displayed content accordingly.
     adjustForAdmin();
 
