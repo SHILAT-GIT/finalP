@@ -12,11 +12,11 @@ function header() {
       <h1 id="titelMainPage">דירות ישראל</h1>
       <span id="buttonMainPageHeader">
         <!-- כפתור התחברות -->
-        <button class="my-btn" id="btnLogin" onclick="openModal('loginModal')">התחברות</button>
+        <button class="my-btn" id="btnLogin" style="border: 1px solid black" onclick="openModal('loginModal')"><b>התחברות</b></button>
         <!-- כפתור הרשמה -->
-        <button class="my-btn" id="btnRegister" onclick="openModal('registerModal')">הרשמה</button>
+        <button class="my-btn" id="btnRegister" style="border: 1px solid black" onclick="openModal('registerModal')"><b>הרשמה</b></button>
         <!-- כפתור התנתקות (מוסתר בהתחלה) -->
-        <button class="my-btn" id="btnLogout" onclick="logout()" style="display: none;">התנתקות</button>
+        <button class="my-btn" id="btnLogout" style="border: 1px solid black" onclick="logout()" style="display: none;"><b>התנתקות</b></button>
 
 
         <!-- התחברות -->

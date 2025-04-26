@@ -7,16 +7,21 @@
     margin-top: 8px !important;
 }
 
+.header button{
+    line-height: normal !important;
+}
+
 #titelMainPage {
     font-weight: bold !important;
 }
 
 ul{
-    line-height: 1.15rem !important;
+    line-height: 1.25rem !important;
 }
 
 #iconPerson {
     height: auto !important;
+    margin-bottom: 0.8px;
 }
 
 .btn{

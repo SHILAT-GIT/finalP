@@ -30,13 +30,13 @@ h1 {
 .favorite {
   position: absolute;
   top: 10px;
-  left: 10px; /* שינוי מ right ל left */
+  left: 10px; 
   cursor: pointer;
   z-index: 10;
-  color: black; /* צבע הלב */
-  background-color: white; /* רקע לבן */
-  border: 1px solid black; /* מסגרת שחורה ללב */
-  border-radius: 50%; /* צורת עיגול */
+  color: black; 
+  background-color: white; 
+  border: 1px solid black; 
+  border-radius: 50%; 
   width: 36px;
   height: 36px;
   display: flex;

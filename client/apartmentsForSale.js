@@ -45,14 +45,6 @@ function displayApartmentForSale() {
           }
         });
 
-        // מועדפים
-        /* const fav = card.querySelector('.favorite');
-         fav.addEventListener('click', (e) => {
-             e.stopPropagation(); 
-             fav.classList.toggle('active');
-             fav.textContent = fav.classList.contains('active') ? '♥' : '♡';
-         });*/
-
         container.appendChild(card);
 
         new Swiper(`.apartment-swiper-${index}`, {

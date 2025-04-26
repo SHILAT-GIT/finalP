@@ -74,7 +74,7 @@ async function submitRequest() {
       document.getElementById("email").value = "";
       document.getElementById("message").value = "";
       responseDiv.textContent = "";
-    }, 10000);
+    }, 10);
 
   } catch (err) {
     alert("שגיאה בשרת. נסה שוב מאוחר יותר.");

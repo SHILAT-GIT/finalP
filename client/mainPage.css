@@ -82,92 +82,6 @@
 /*עד כאן עיצוב הפסקה של מחפשים דירה*/
 
 /*עיצוב הקרוסלה*/
-/*body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-.container {
-  display: flex;
-  justify-content: space-around;
-}
-
-.slider-container {
-  width: 600px;
-  height: 400px;
-  position: relative;
-  overflow: hidden;
-}
-
-.slider {
-  width: 300%;
-  height: 100%;
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-}
-
-.slide {
-  width: 33.33%;
-}
-
-.slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.prev-btn,
-.next-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(183, 238, 250, 0.5);
-  color: black;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-.prev-btn {
-  left: 10px;
-}
-
-.next-btn {
-  right: 10px;
-}
-
-.slide-link {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(183, 238, 250, 0.5);
-  color: black;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 5px;
-  z-index: 2;
-  font-size: 19px;
-}
-
-
-.slider-left {
-  margin-right: 30px;
-}
-
-.slider-right {
-  margin-left: 30px;
-}
-
-.prev-btn:hover,
-.next-btn:hover,
-.slide-link:hover {
-  background-color: rgba(159, 198, 207, 0.5);
-  color: black;
-}*/
-
-
 
 body {
   font-family: "Segoe UI", sans-serif;
@@ -294,10 +208,10 @@ body {
 
 #comments {
   text-decoration: none;
-  color: rgb(42, 162, 232);
+  color: rgb(13, 175, 234);
 }
 
 #comments:hover {
-  color: rgb(18, 97, 224);
+  color: rgb(28, 157, 204);
 }
 /*עד כאן עיצוב התגובות*/
