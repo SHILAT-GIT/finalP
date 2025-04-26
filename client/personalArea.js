@@ -161,3 +161,24 @@ document.addEventListener("DOMContentLoaded", async () => {
         deleteAccount(deleteButton);
     });
 });
+
+
+//עין של הסיסמה
+/*function togglePassword(inputId, toggleElement) {
+    const input = document.getElementById(inputId);
+    const eyeIcon = toggleElement.querySelector('i');
+  
+    if (input.value.trim() === "") {
+      return; // אם השדה ריק, צא מהפונקציה ולא תתבצע פעולה
+    }
+    if (input.type === "password") {
+      input.type = "text";
+      eyeIcon.classList.remove('fa-eye');
+      eyeIcon.classList.add('fa-eye-slash');
+    } else {
+      input.type = "password";
+      eyeIcon.classList.remove('fa-eye-slash');
+      eyeIcon.classList.add('fa-eye');
+    }
+  
+  }*/

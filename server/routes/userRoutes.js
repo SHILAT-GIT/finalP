@@ -209,6 +209,53 @@ router.post("/login", async (req, res) => {
     }
 });
 
+// אימות שם משתמש ומספר טלפון
+router.post("/verifyUserPhone", async (req, res) => {
+    const { email, phone } = req.body;
+
+    try {
+        const user = await User.findOne({ email: email, phone: phone });
+
+        if (!user) {
+            return res.status(404).json({ success: false, message: " כתובת מייל או מספר טלפון לא נכונים." });
+        }
+
+        // שמור את ID המשתמש ב-Session או החזר ללקוח (אם אין לך ניהול session עדיין)
+        // לדוגמה נחזיר את ה-ID
+        res.status(200).json({ success: true, userId: user._id });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, message: "שגיאת שרת." });
+    }
+});
+
+// עדכון סיסמה חדשה
+router.post("/resetPassword", async (req, res) => {
+    const { userId, newPassword } = req.body;
+
+    if (!userId || !newPassword) {
+        return res.status(400).json({ success: false, message: "חסרים נתונים." });
+    }
+
+    try {
+        const user = await User.findById(userId);
+
+        if (!user) {
+            return res.status(404).json({ success: false, message: "משתמש לא נמצא." });
+        }
+
+        // עדכון סיסמה (כדאי בהמשך גם להצפין אותה עם bcrypt למשל)
+        user.password = newPassword;
+        await user.save();
+
+        res.status(200).json({ success: true, message: "הסיסמה עודכנה בהצלחה." });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, message: "שגיאת שרת." });
+    }
+});
+
+
 
 
 module.exports = router;

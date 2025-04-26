@@ -9,9 +9,17 @@ function closeModal(id) {
   clearInputs(id);
 }
 
+//פונקציה שסוגרת את חלון התחברות בעת לחיצה על שכחתי סיסמה ופותחת את חלון שכחתי סיסמה
+function openForgotPassword() {
+  closeModal('loginModal'); // סוגר את מודל ההתחברות
+  openModal('forgotPasswordModal'); // פותח את מודל שכחתי סיסמה
+}
+
 function clearErrors() {
   document.getElementById("loginError").textContent = "";
   document.getElementById("registerError").textContent = "";
+  document.getElementById("forgotPasswordError").textContent = "";
+  document.getElementById("resetPasswordError").textContent = "";
 }
 
 
@@ -145,6 +153,120 @@ async function validateLogin() {
   }
 }
 
+let currentUserId = null;
+
+//ולידציה על שכחתי סיסמה
+function validateForgotPassword() {
+  const email = document.getElementById("forgotPasswordEmail").value.trim();
+  const phone = document.getElementById('forgotPasswordPhone').value.trim();
+  const errorDiv = document.getElementById("forgotPasswordError");
+
+  const emailRegex = /^[a-zA-Z0-9._-]{2,}@[a-zA-Z0-9.-]{2,}\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?$/;
+  const phoneRegex = /05[0-9]{8}$/;
+
+
+  if (!email && !phone) {
+    errorDiv.textContent = "נא למלא שם משתמש ומספר טלפון.";
+    return;
+  }
+
+
+  if (!email) {
+    errorDiv.textContent = "נא למלא כתובת מייל.";
+    return;
+  }
+
+  if (!emailRegex.test(email)) {
+    errorDiv.textContent = "כתובת מייל לא תקינה.";
+    return;
+  }
+
+  if (!phone) {
+    errorDiv.textContent = "נא למלא מספר טלפון.";
+    return;
+  }
+
+  if (!phoneRegex.test(phone)) {
+    errorDiv.textContent = "מספר טלפון לא תקין.";
+    return;
+  }
+
+
+  // שליחת בקשה לשרת
+  fetch('api/users/verifyUserPhone', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, phone })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      currentUserId = data.userId; // שמירת ה-userId
+
+      closeModal('forgotPasswordModal');
+      openModal('resetPasswordModal');
+    } else {
+      document.getElementById('forgotPasswordError').innerText = "כתובת מייל או טלפון שגויים";
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    document.getElementById('forgotPasswordError').innerText = "שגיאה בשרת";
+  });
+}
+
+//פוקציה המאשרת את הסיסמה החדשה
+function submitNewPassword() {
+  const newPassword = document.getElementById('newPassword').value.trim();
+  const confirmNewPassword = document.getElementById('confirmNewPassword').value.trim();
+  const errorDiv = document.getElementById("resetPasswordError");
+
+
+  const passwordRegex = /^(?!.*\s).*/;
+
+
+  if (!newPassword) {
+    errorDiv.textContent = "נא למלא סיסמה חדשה.";
+    return;
+  }
+
+  if (!passwordRegex.test(newPassword) || newPassword.length < 9) {
+    errorDiv.textContent = "סיסמה חייבת להכיל לפחות 9 תווים וללא רווחים.";
+    return;
+  }
+
+  if (!confirmNewPassword) {
+    errorDiv.textContent = "נא למלא אימות סיסמה חדשה.";
+    return;
+  }
+
+  if (newPassword !== confirmNewPassword) {
+    errorDiv.textContent = "הסיסמאות אינן תואמות";
+    return;
+  }
+
+  // שליחת סיסמה חדשה לשרת
+  fetch('api/users/resetPassword', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ userId: currentUserId, newPassword })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      closeModal('resetPasswordModal');
+      alert('הסיסמה שונתה בהצלחה!');
+    } else {
+      document.getElementById('resetPasswordError').innerText = "אירעה שגיאה, נסה שוב";
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    document.getElementById('resetPasswordError').innerText = "שגיאה בשרת";
+  });
+}
+
+
 //פונקציה זו אחראית על החלפת כפתור התחברות להתנתקות בביצוע התחברות
 function updateAuthUI() {
   const user = localStorage.getItem("user");
@@ -189,13 +311,8 @@ async function validateRegister() {
     return;
   }
 
-  if (pass.length < 6) {
-    errorDiv.textContent = "סיסמה חייבת להכיל לפחות 6 תווים.";
-    return;
-  }
-
-  if (!passwordRegex.test(pass)) {
-    errorDiv.textContent = "סיסמה לא תקינה.";
+  if (!passwordRegex.test(pass) || pass.length < 9) {
+    errorDiv.textContent = "סיסמה חייבת להכיל לפחות 9 תווים וללא רווחים.";
     return;
   }
 
@@ -250,6 +367,12 @@ document.querySelectorAll('#registerModal input').forEach(input => {
 document.querySelectorAll('#loginModal input').forEach(input => {
   input.addEventListener('input', () => {
     document.getElementById('loginError').textContent = '';
+  });
+});
+
+document.querySelectorAll('#forgotPasswordModal input').forEach(input => {
+  input.addEventListener('input', () => {
+    document.getElementById('forgotPasswordError').textContent = '';
   });
 });
 

@@ -1,13 +1,13 @@
 /* navbar */
 .header {
-    padding:  15px 5px !important;
+    padding: 15px 5px !important;
 }
 
-.header #titelMainPage{
+.header #titelMainPage {
     margin-top: 8px !important;
 }
 
-.header button{
+.header button {
     line-height: normal !important;
 }
 
@@ -15,7 +15,7 @@
     font-weight: bold !important;
 }
 
-ul{
+ul {
     line-height: 1.25rem !important;
 }
 
@@ -24,9 +24,10 @@ ul{
     margin-bottom: 0.8px;
 }
 
-.btn{
+.btn {
     line-height: normal !important;
 }
+
 /* end - navbar */
 
 .container {
@@ -125,3 +126,23 @@ ul{
     background-color: #f8d7da;
     color: #721c24;
 }
+
+/*עין של הסיסמה*/
+/*.toggle-password {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 16px;
+    background: none;
+    border: none;
+    color: #555;
+    padding: 0;
+    width: 3px;
+
+}
+
+.password-container {
+    position: relative;
+}*/

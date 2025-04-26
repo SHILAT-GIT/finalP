@@ -18,22 +18,6 @@ function header() {
         <!-- כפתור התנתקות (מוסתר בהתחלה) -->
         <button class="my-btn" id="btnLogout" style="border: 1px solid black" onclick="logout()" style="display: none;"><b>התנתקות</b></button>
 
-
-        <!-- התחברות -->
-        <div class="modal-overlay" id="loginModal">
-          <div class="my-modal">
-            <button class="close-btn" onclick="closeModal('loginModal')">×</button>
-            <h2>התחברות למערכת</h2>
-            <input class="inputLoginRegister" type="email" id="loginEmail" placeholder="כתובת מייל" />
-            <div class="password-container">
-              <input class="inputLoginRegister" type="password" id="loginPass" minlength="6" placeholder="סיסמה" />
-              <span class="toggle-password" onclick="togglePassword('loginPass', this)">
-                <i class="fa fa-eye"></i> </span>
-            </div>
-            <div id="loginError" class="error"></div>
-            <button class="btn-send" onclick="validateLogin()">שלח</button>
-          </div>
-        </div>
         <!-- הרשמה -->
         <div class="modal-overlay" id="registerModal">
           <div class="my-modal">
@@ -41,7 +25,7 @@ function header() {
             <h2>הרשמה למערכת</h2>
             <input class="inputLoginRegister" type="text" id="regUser" placeholder="שם משתמש" />
             <div class="password-container">
-              <input class="inputLoginRegister" type="password" id="regPass" minlength="6" placeholder="סיסמה" />
+              <input class="inputLoginRegister" type="password" id="regPass" minlength="9" placeholder="סיסמה" />
               <span class="toggle-password" onclick="togglePassword('regPass', this)">
                 <i class="fa fa-eye"></i> </span>
             </div>
@@ -49,6 +33,54 @@ function header() {
             <input class="inputLoginRegister" type="email" id="regEmail" placeholder="כתובת מייל" />
             <div id="registerError" class="error"></div>
             <button class="btn-send" onclick="validateRegister()">שלח</button>
+          </div>
+        </div>
+        <!-- התחברות -->
+        <div class="modal-overlay" id="loginModal">
+          <div class="my-modal">
+            <button class="close-btn" onclick="closeModal('loginModal')">×</button>
+            <h2>התחברות למערכת</h2>
+            <input class="inputLoginRegister" type="email" id="loginEmail" placeholder="כתובת מייל" />
+            <div class="password-container">
+              <input class="inputLoginRegister" type="password" id="loginPass" minlength="9" placeholder="סיסמה" />
+              <span class="toggle-password" style="transform: translateY(-115%);" onclick="togglePassword('loginPass', this)">
+                <i class="fa fa-eye"></i> </span>
+              <div class="forgot-password-link">
+              <a href="#" onclick="openForgotPassword()">שכחתי סיסמה?</a>
+              </div>
+            </div>
+            <div id="loginError" class="error"></div>
+            <button class="btn-send" onclick="validateLogin()">שלח</button>
+          </div>
+        </div>
+        <!-- שכחתי סיסמה -->
+        <div class="modal-overlay" id="forgotPasswordModal">
+          <div class="my-modal">
+            <button class="close-btn" onclick="closeModal('forgotPasswordModal')">×</button>
+            <h2>שכחתי סיסמה</h2>
+            <input class="inputLoginRegister" type="email" id="forgotPasswordEmail" placeholder="כתובת מייל" />
+            <input class="inputLoginRegister" type="text" id="forgotPasswordPhone" placeholder="מספר טלפון" />
+            <div id="forgotPasswordError" class="error"></div>
+            <button class="btn-send" onclick="validateForgotPassword()">שלח</button>
+          </div>
+        </div>
+        <!-- קביעת סיסמה חדשה -->
+        <div class="modal-overlay" id="resetPasswordModal">
+          <div class="my-modal">
+            <button class="close-btn" onclick="closeModal('resetPasswordModal')">×</button>
+            <h2>הגדרת סיסמה חדשה</h2>
+            <div class="password-container">
+              <input class="inputLoginRegister" type="password" id="newPassword" placeholder="סיסמה חדשה" minlength="9" />
+              <span class="toggle-password" onclick="togglePassword('newPassword', this)">
+                <i class="fa fa-eye"></i> </span>
+            </div>
+            <div class="password-container">    
+              <input class="inputLoginRegister" type="password" id="confirmNewPassword" placeholder="אימות סיסמה חדשה" minlength="9" />
+              <span class="toggle-password" onclick="togglePassword('confirmNewPassword', this)">
+                <i class="fa fa-eye"></i> </span>
+            </div>
+            <div id="resetPasswordError" class="error"></div>
+            <button class="btn-send" onclick="submitNewPassword()">אישור</button>
           </div>
         </div>
       </span>
