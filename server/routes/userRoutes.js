@@ -220,8 +220,6 @@ router.post("/verifyUserPhone", async (req, res) => {
             return res.status(404).json({ success: false, message: " כתובת מייל או מספר טלפון לא נכונים." });
         }
 
-        // שמור את ID המשתמש ב-Session או החזר ללקוח (אם אין לך ניהול session עדיין)
-        // לדוגמה נחזיר את ה-ID
         res.status(200).json({ success: true, userId: user._id });
     } catch (err) {
         console.error(err);
@@ -244,7 +242,6 @@ router.post("/resetPassword", async (req, res) => {
             return res.status(404).json({ success: false, message: "משתמש לא נמצא." });
         }
 
-        // עדכון סיסמה (כדאי בהמשך גם להצפין אותה עם bcrypt למשל)
         user.password = newPassword;
         await user.save();
 
