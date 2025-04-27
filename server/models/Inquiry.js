@@ -6,8 +6,8 @@ const inquirySchema = new mongoose.Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     status: {
         type: String,
-        enum: ['התקבל', 'בטיפול', 'טופל'],
-        default: 'התקבל'
+        enum: ['התקבלה', 'בטיפול', 'טופל'],
+        default: 'התקבלה'
     }
 });
 

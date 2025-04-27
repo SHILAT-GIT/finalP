@@ -20,7 +20,7 @@ router.post('/send-inquiry', async (req, res) => {
         const existingInquiry = await Inquiry.findOne({
             user: userId,
             apartment: apartmentId,
-            status: { $in: ["התקבל", "בטיפול"] }
+            status: { $in: ["התקבלה", "בטיפול"] }
         });
         if (existingInquiry)
             return res.status(402).send({ message: 'Inquiry already exists' });
@@ -37,7 +37,7 @@ router.post('/send-inquiry', async (req, res) => {
             date: dateWithSlashes,
             apartment: apartmentId,
             user: userId,
-            status: 'התקבל'
+            status: 'התקבלה'
         });
 
         await newInquiry.save();

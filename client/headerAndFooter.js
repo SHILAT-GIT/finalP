@@ -46,7 +46,7 @@ function header() {
               <span class="toggle-password" style="transform: translateY(-115%);" onclick="togglePassword('loginPass', this)">
                 <i class="fa fa-eye"></i> </span>
               <div class="forgot-password-link">
-              <a href="#" onclick="openForgotPassword()">שכחתי סיסמה?</a>
+              <a href="#" onclick="openForgotPassword()">שכחתי סיסמה</a>
               </div>
             </div>
             <div id="loginError" class="error"></div>

@@ -25,7 +25,7 @@ router.post('/send-inquiry', async (req, res) => {
             phone,
             email,
             message,
-            status: 'התקבל'
+            status: 'התקבלה'
         });
 
         await newGeneralInquiry.save();

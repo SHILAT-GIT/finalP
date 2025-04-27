@@ -119,7 +119,7 @@ function displayUserInquiries(inquiries) {
                     </button>
                 </div>
             </td>
-            <td><span class="badge badge-status ${getStatusClass(inquiry.status)}">${inquiry.status === "התקבל" ? "נשלח" : inquiry.status}</span></td>
+            <td><span class="badge badge-status ${getStatusClass(inquiry.status)}">${inquiry.status === "התקבלה" ? "נשלחה" : inquiry.status}</span></td>
             <td><i class="bi bi-chevron-down icon-toggle" onclick="toggleDescription(${index})"></i></td>
         `;
 
@@ -153,7 +153,7 @@ function displayUserInquiries(inquiries) {
 // Returns a CSS class that suits the provided status
 function getStatusClass(status) {
     switch (status) {
-        case 'התקבל':
+        case 'התקבלה':
             return 'badge-accepted';
         case 'בטיפול':
             return 'badge-processing';
@@ -217,7 +217,7 @@ function displayManageInquiries(inquiries) {
     const container = document.getElementById('inquiriesContainer');
     container.innerHTML = '';
 
-    const accepted = inquiries.filter(inquiry => inquiry.status === 'התקבל');
+    const accepted = inquiries.filter(inquiry => inquiry.status === 'התקבלה');
     const processing = inquiries.filter(inquiry => inquiry.status === 'בטיפול');
     const done = inquiries.filter(inquiry => inquiry.status === 'טופל');
 
@@ -303,7 +303,7 @@ function displayManageInquiries(inquiries) {
                 </td>
                 <td><span class="badge badge-status ${getStatusClass(inquiry.status)}">${inquiry.status}</span></td>
                 <td>
-                    <div style="display: flex; justify-content: ${inquiry.status === 'התקבל' ? 'space-evenly' : 'center'};">
+                    <div style="display: flex; justify-content: ${inquiry.status === 'התקבלה' ? 'space-evenly' : 'center'};">
                         ${inquiry.status !== "בטיפול"
                     ? `<i class="bi bi-pencil-square icon-button text-primary" onclick="changeInquiryStatus('${inquiry._id}', 'בטיפול')"></i>`
                     : ""}
@@ -375,7 +375,7 @@ function displayManageInquiries(inquiries) {
         return accordionItem;
     };
 
-    accordion.appendChild(createAccordionItem('התקבל', accepted, 1));
+    accordion.appendChild(createAccordionItem('התקבלה', accepted, 1));
     accordion.appendChild(createAccordionItem('בטיפול', processing, 2));
     accordion.appendChild(createAccordionItem('טופל', done, 3));
 

@@ -8,8 +8,8 @@ const generalnquirySchema = new mongoose.Schema({
     message: { type: String, required: true },
     status: {
         type: String,
-        enum: ['התקבל', 'בטיפול', 'טופל'],
-        default: 'התקבל'
+        enum: ['התקבלה', 'בטיפול', 'טופל'],
+        default: 'התקבלה'
     }
 });
 
