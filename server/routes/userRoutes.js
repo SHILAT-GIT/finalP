@@ -3,6 +3,7 @@ const router = express.Router();
 
 const User = require('../models/User');
 const Apartment = require('../models/Apartment');
+const Inquiry = require('../models/Inquiry');
 
 // Fetch all saved apartments of a user
 router.get('/saved-apartments/:id', async (req, res) => {
@@ -127,26 +128,29 @@ router.delete('/delete-account/:id', async (req, res) => {
     const userId = req.params.id;
 
     try {
+        const userApartments = await Apartment.find({ owner: userId });
+        const userApartmentIds = userApartments.map(apartment => apartment._id);
+
+        await Inquiry.deleteMany({
+            $or: [
+                { apartment: { $in: userApartmentIds } },
+                { user: userId }
+            ]
+        });
+
+        await User.updateMany(
+            { savedApartments: { $in: userApartmentIds } },
+            { $pull: { savedApartments: { $in: userApartmentIds } } }
+        );
+
+        await Apartment.deleteMany({ owner: userId });
+
         const user = await User.findByIdAndDelete(userId);
         if (!user) {
             return res.status(404).send({ message: 'User not found' });
         }
 
-        const userApartments = await Apartment.find({ owner: userId });
-        const apartmentIds = userApartments.map(a => a._id);
-    
-        await Inquiry.deleteMany({ apartment: { $in: apartmentIds } });
-    
-        await Apartment.deleteMany({ owner: userId });
-    
-        await User.updateMany(
-          { savedApartments: { $in: apartmentIds } },
-          { $pull: { savedApartments: { $in: apartmentIds } } }
-        );
-    
-        await Inquiry.deleteMany({ user: userId });
-
-        res.status(200).send({ message: 'Account successfully deleted' });
+        res.status(200).send({ message: 'The account and all related data have been successfully deleted.' });
     } catch (error) {
         console.error(error);
         res.status(500).send({ message: 'Server error. Please try again later.' });

@@ -98,14 +98,13 @@
 
                 <div class="col-md-6">
                   <label for="validationCustom03" class="form-label">סיסמא</label>
-                  <!--<div class="password-container">
+                  <div class="position-relative">
                     <input type="password" class="form-control" id="validationCustom03" name="password" required
                       minlength="9" pattern="^(?!.*\s).*">
-                    <span class="toggle-password" onclick="togglePassword('validationCustom03', this)">
-                      <i class="fa fa-eye"></i> </span>
-                  </div>-->
-                  <input type="password" class="form-control" id="validationCustom03" name="password" required
-                      minlength="9" pattern="^(?!.*\s).*">
+                    <span onclick="togglePassword('validationCustom03', this)">
+                      <i class="fa fa-eye toggle-password"></i>
+                    </span>
+                  </div>
                   <div class="invalid-feedback">
                     הסיסמא חייבת להיות באורך 9 תווים לפחות ולא להכיל רווחים.
                   </div>
