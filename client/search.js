@@ -1,9 +1,11 @@
 function displayApartmentSearch() {
   const container = document.getElementById("apartments-container");
+  const massage = document.getElementById("apartments-massage");
+
   const query = new URLSearchParams(window.location.search).get("q");
 
   if (!query) {
-    container.innerHTML = "<p>לא הוזנה מילת חיפוש.</p>";
+    massage.innerHTML = "<p>לא הוזנה מילת חיפוש.</p>";
     return;
   }
 
@@ -11,7 +13,7 @@ function displayApartmentSearch() {
     .then(res => res.json())
     .then(data => {
       if (!data.apartments || data.apartments.length === 0) {
-        container.innerHTML = "<p>לא נמצאו תוצאות לחיפוש.</p>";
+        massage.innerHTML = "<p>לא נמצאו תוצאות לחיפוש.</p>";
         return;
       }
 
@@ -72,7 +74,7 @@ function displayApartmentSearch() {
     })
     .catch(err => {
       console.error("שגיאה בעת טעינת תוצאות החיפוש:", err);
-      container.innerHTML = "<p>אירעה שגיאה בעת טעינת התוצאות.</p>";
+      massage.innerHTML = "<p>אירעה שגיאה בעת טעינת התוצאות.</p>";
     });
 }
 
