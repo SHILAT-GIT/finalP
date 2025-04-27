@@ -111,6 +111,8 @@ function sendInquiry(apartmentId) {
     .then(response => {
       if (response.status === 200) {
         alert("הפנייה נשלחה בהצלחה!");
+      } else if (response.status === 402) {
+        alert("שלחת כבר פניה לגבי דירה זו, אנו מטפלים בה וניצור עימך קשר בהקדם.");
       } else {
         alert("אירעה שגיאה בשליחת הפנייה, נסו שוב מאוחר יותר.");
       }

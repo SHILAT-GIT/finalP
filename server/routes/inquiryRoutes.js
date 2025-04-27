@@ -16,14 +16,23 @@ router.post('/send-inquiry', async (req, res) => {
         if (!userExists || !apartmentExists) {
             return res.status(400).send({ message: 'Invalid user or apartment ID' });
         }
+
+        const existingInquiry = await Inquiry.findOne({
+            user: userId,
+            apartment: apartmentId,
+            status: { $in: ["התקבל", "בטיפול"] }
+        });
+        if (existingInquiry)
+            return res.status(402).send({ message: 'Inquiry already exists' });
+
         const now = new Date();
 
-        const day = now.getDate().toString().padStart(2, '0'); 
-        const month = (now.getMonth() + 1).toString().padStart(2, '0'); 
+        const day = now.getDate().toString().padStart(2, '0');
+        const month = (now.getMonth() + 1).toString().padStart(2, '0');
         const year = now.getFullYear();
-        
+
         const dateWithSlashes = `${day}/${month}/${year}`;
-        
+
         const newInquiry = new Inquiry({
             date: dateWithSlashes,
             apartment: apartmentId,
