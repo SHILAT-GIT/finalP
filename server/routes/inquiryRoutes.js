@@ -54,10 +54,12 @@ router.get('/all-inquiries', async (req, res) => {
     try {
         const inquiries = await Inquiry.find()
             .populate('user', '-password -role')
-            .populate('apartment')
             .populate({
-                path: 'apartment.owner',
-                select: '-password -role'
+                path: 'apartment',
+                populate: {
+                    path: 'owner',
+                    select: '-password -role'
+                }
             });
 
         if (!inquiries || inquiries.length === 0) {
