@@ -166,7 +166,7 @@ function validateForgotPassword() {
 
 
   if (!email && !phone) {
-    errorDiv.textContent = "נא למלא שם משתמש ומספר טלפון.";
+    errorDiv.textContent = "נא למלא כתובת מייל ומספר טלפון.";
     return;
   }
 
