@@ -215,3 +215,12 @@ body {
   color: rgb(28, 157, 204);
 }
 /*עד כאן עיצוב התגובות*/
+
+/*עיצוב חדש באתר*/
+#latest-apartments {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin: 15px;
+}
+/*עד כאן עיצוב חדש באתר*/

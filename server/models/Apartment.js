@@ -25,7 +25,11 @@ const apartmentSchema = new mongoose.Schema({
         type: String,
         enum: ['מאושר', 'ממתין לאישור', 'נדחה'],
         default: 'ממתין לאישור'
-    }
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+      }
 });
 
 module.exports = mongoose.model('Apartment', apartmentSchema);

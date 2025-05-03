@@ -75,12 +75,6 @@ h1 {
   object-fit: cover;
 }
 
-#apartments-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-}
-
 .apartment-card {
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -93,3 +87,23 @@ h1 {
 .apartment-card:hover {
   transform: scale(1.02);
 }
+
+/*עיצוב לתגית חדש*/
+
+.new-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgb(0, 153, 255);
+  color: white;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 1rem;
+  border: 1px solid white; 
+  z-index: 10;
+}
+.image-wrapper {
+  position: relative;
+}
+

@@ -6,6 +6,7 @@ function displayApartmentForRent() {
     .then(data => {
       data.apartments.forEach((apt, index) => {
         const saved = savedApartments.some(item => item._id === apt._id);
+        const isNew = (new Date() - new Date(apt.createdAt)) / (1000 * 60 * 60 * 24) < 7;
 
         const card = document.createElement("div");
         card.className = "apartment-card";
@@ -18,6 +19,7 @@ function displayApartmentForRent() {
 
         card.innerHTML = `
             <div class="image-wrapper">
+            ${isNew ? '<span class="new-badge">חדש!</span>' : ''}
             <span class="favorite"><i class="${saved ? "bi bi-bookmark-fill" : "bi bi-bookmark"}" id="saveIcon-${apt._id}" onclick="saveApartment('${apt._id}')" style="font-size: 1rem;"></i></span>
               <div class="swiper apartment-swiper-${index}">
                 <div class="swiper-wrapper">
@@ -58,6 +60,7 @@ function displayApartmentForRent() {
       });
     });
 }
+
 document.addEventListener("DOMContentLoaded", async () => {
   if (user && user.id)
     await fetchSavedApartments();

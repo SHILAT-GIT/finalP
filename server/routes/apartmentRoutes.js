@@ -87,7 +87,7 @@ router.delete('/delete-apartment/:id', async (req, res) => {
 //בקשת שרת לשליפת כל הדירות המאושרות
 router.get('/apartments', async (_, res) => {
     try {
-        const apartments = await Apartment.find({ status: "מאושר" });
+        const apartments = await Apartment.find({ status: "מאושר" }).sort({ createdAt: -1 });
         res.send({ apartments });
     } catch (err) {
         res.status(500).send({ message: 'שגיאה בשרת' });
@@ -97,7 +97,7 @@ router.get('/apartments', async (_, res) => {
 //בקשת שרת לשליפת דירה לפי מזהה
 router.get('/apartments/:id', async (req, res) => {
     try {
-        const apartment = await Apartment.findById(req.params.id);
+        const apartment = await Apartment.findById(req.params.id).sort({ createdAt: -1 });
         res.send({ apartment });
     } catch (err) {
         res.status(500).send({ message: 'שגיאה בשרת' });
@@ -107,7 +107,7 @@ router.get('/apartments/:id', async (req, res) => {
 // דירות להשכרה
 router.get('/for-rent', async (_, res) => {
     try {
-        const apartments = await Apartment.find({ status: "מאושר", type: "דירה להשכרה" });
+        const apartments = await Apartment.find({ status: "מאושר", type: "דירה להשכרה" }).sort({ createdAt: -1 });
         res.send({ apartments });
     } catch (err) {
         res.status(500).send({ message: 'שגיאה בשרת' });
@@ -117,7 +117,7 @@ router.get('/for-rent', async (_, res) => {
 // דירות למכירה
 router.get('/for-sale', async (_, res) => {
     try {
-        const apartments = await Apartment.find({ status: "מאושר", type: "דירה למכירה" });
+        const apartments = await Apartment.find({ status: "מאושר", type: "דירה למכירה" }).sort({ createdAt: -1 });
         res.send({ apartments });
     } catch (err) {
         res.status(500).send({ message: 'שגיאה בשרת' });
@@ -151,7 +151,7 @@ router.get('/search', async (req, res) => {
     }
 
     try {
-        const apartments = await Apartment.find(query);
+        const apartments = await Apartment.find(query).sort({ createdAt: -1 });
         res.send({ apartments });
     } catch (err) {
         console.error("שגיאה בחיפוש:", err);
@@ -192,5 +192,25 @@ router.post("/add-apartment", upload.array("images"), async (req, res) => {
         res.status(500).send({ message: "שגיאה בהוספת דירה" });
     }
 });
+
+//הוספת 4 דירות אחרונות לעמוד הראשי
+router.get('/latest', async (_, res) => {
+    try {
+        const oneWeekAgo = new Date();
+        oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+
+        const latestApartments = await Apartment.find({
+            status: "מאושר",
+            createdAt: { $gte: oneWeekAgo }
+        })
+        .sort({ createdAt: -1 })
+        .limit(4);
+
+        res.send({ apartments: latestApartments });
+    } catch (err) {
+        res.status(500).send({ message: 'שגיאה בשרת' });
+    }
+});
+
 
 module.exports = router;

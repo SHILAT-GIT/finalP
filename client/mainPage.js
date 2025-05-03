@@ -1,0 +1,189 @@
+//קרוסלות
+document.addEventListener('DOMContentLoaded', function () {
+  const carousels = document.querySelectorAll('.carousel');
+
+  carousels.forEach(carousel => {
+    const track = carousel.querySelector('.carousel-track');
+    const slides = Array.from(track.children);
+    const nextBtn = carousel.querySelector('.carousel-btn.next');
+    const prevBtn = carousel.querySelector('.carousel-btn.prev');
+
+    let currentIndex = 0;
+
+    const updateCarousel = () => {
+      track.style.transform = `translateX(${currentIndex * 100}%)`;
+    };
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateCarousel();
+    });
+
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      updateCarousel();
+    });
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  initCarousel("carousel-sale");
+  initCarousel("carousel-rent");
+});
+
+//חדש באתר
+/*function displayLatestApartments() {
+  const container = document.getElementById("latest-apartments");
+
+  fetch("api/apartments/latest")
+  
+    .then(res => res.json())
+    .then(data => {
+      data.apartments.forEach((apt, index) => {
+        const saved = savedApartments.some(item => item._id === apt._id);
+
+        const card = document.createElement("div");
+        card.className = "apartment-card";
+
+        const imagesHtml = apt.images.map((img, i) => `
+            <div class="swiper-slide">
+              <img src="${img}" alt="תמונה ${i + 1}" />
+            </div>
+          `).join("");
+
+        card.innerHTML = `
+            <div class="image-wrapper">
+              <span class="new-badge">חדש!</span>
+              <span class="favorite"><i class="${saved ? "bi bi-bookmark-fill" : "bi bi-bookmark"}" id="saveIcon-${apt._id}" onclick="saveApartment('${apt._id}')" style="font-size: 1rem;"></i></span>
+              <div class="swiper latest-swiper-${index}">
+                <div class="swiper-wrapper">
+                  ${imagesHtml}
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+              </div>
+            </div>
+            <div class="details">
+              <h3>${apt.price} ₪</h3>
+              <p><b>${apt.type}</b></p>
+              <p>${apt.apartmentDetails.numberOfRooms} חד׳ · קומה ${apt.apartmentDetails.floor} · ${apt.apartmentDetails.sizeInSquareMeters} מ"ר</p>
+              <p>${apt.type}, ${apt.address.street}, ${apt.address.city}</p>
+            </div>
+        `;
+
+        card.addEventListener("click", () => {
+          window.location.href = `apartmentDetails.html?id=${apt._id}`;
+        });
+
+        container.appendChild(card);
+
+        new Swiper(`.latest-swiper-${index}`, {
+          loop: true,
+          pagination: { el: `.latest-swiper-${index} .swiper-pagination` },
+          navigation: {
+            nextEl: `.latest-swiper-${index} .swiper-button-next`,
+            prevEl: `.latest-swiper-${index} .swiper-button-prev`
+          }
+        });
+      });
+    });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (user && user.id)
+     fetchSavedApartments();
+  displayLatestApartments();
+});
+*/
+
+
+function displayLatestApartments() {
+
+  const container = document.getElementById("apartments-container");
+
+  fetch("api/apartments/latest")
+    .then(res => res.json())
+    .then(data => {
+      data.apartments.forEach((apt, index) => {
+        const saved = savedApartments.some(item => item._id === apt._id);
+        const isNew = (new Date() - new Date(apt.createdAt)) / (1000 * 60 * 60 * 24) < 7;
+
+        const card = document.createElement("div");
+        card.className = "apartment-card";
+
+        const imagesHtml = apt.images.map((img, i) => `
+            <div class="swiper-slide">
+              <img src="${img}" alt="תמונה ${i + 1}" />
+            </div>
+          `).join("");
+
+        card.innerHTML = `
+            <div class="image-wrapper">
+            ${isNew ? '<span class="new-badge">חדש!</span>' : ''}
+            <span class="favorite"><i class="${saved ? "bi bi-bookmark-fill" : "bi bi-bookmark"}" id="saveIcon-${apt._id}" onclick="saveApartment('${apt._id}')" style="font-size: 1rem;"></i></span>
+              <div class="swiper apartment-swiper-${index}">
+                <div class="swiper-wrapper">
+                  ${imagesHtml}
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+              </div>
+            </div>
+            <div class="details">
+              <h3>${apt.price} ₪</h3>
+              <p><b>${apt.type}</b></p>
+              <p>${apt.apartmentDetails.numberOfRooms} חד׳ · קומה ${apt.apartmentDetails.floor} · ${apt.apartmentDetails.sizeInSquareMeters} מ"ר</p>
+              <p>${apt.type}, ${apt.address.street}, ${apt.address.city}</p>
+            </div>
+          `;
+
+        // קליק על כרטיס עובר לעמוד הדירה (אבל רק אם לא נלחץ על כפתור או תמונה בתוך הקרוסלה)
+        card.addEventListener("click", (e) => {
+          const isInsideSwiper = e.target.closest(".swiper");
+          const isFavoriteIcon = e.target.closest(".favorite");
+          if (!isInsideSwiper && !isFavoriteIcon) {
+            window.location.href = `apartmentDetails.html?id=${apt._id}`;
+          }
+        });
+
+        container.appendChild(card);
+
+        new Swiper(`.apartment-swiper-${index}`, {
+          loop: true,
+          pagination: { el: `.apartment-swiper-${index} .swiper-pagination` },
+          navigation: {
+            nextEl: `.apartment-swiper-${index} .swiper-button-next`,
+            prevEl: `.apartment-swiper-${index} .swiper-button-prev`
+          }
+        });
+      });
+    });
+}
+
+
+document.addEventListener("DOMContentLoaded", async () => {
+  if (user && user.id)
+    await fetchSavedApartments();
+
+  displayLatestApartments();
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
