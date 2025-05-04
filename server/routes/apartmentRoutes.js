@@ -203,12 +203,238 @@ router.get('/latest', async (_, res) => {
             status: "מאושר",
             createdAt: { $gte: oneWeekAgo }
         })
-        .sort({ createdAt: -1 })
-        .limit(4);
+            .sort({ createdAt: -1 })
+            .limit(4);
 
         res.send({ apartments: latestApartments });
     } catch (err) {
         res.status(500).send({ message: 'שגיאה בשרת' });
+    }
+});
+
+
+// Helper function to analyze user preferences based on saved and viewed apartments
+const getUserPreferences = (apartments) => {
+    const typeData = {
+        "דירה למכירה": {
+            count: 0,
+            cityCount: {},
+            maxPrice: 0,
+        },
+        "דירה להשכרה": {
+            count: 0,
+            cityCount: {},
+            maxPrice: 0,
+        }
+    };
+
+    apartments.forEach(apartment => {
+        const type = apartment.type;
+        const city = apartment.address.city;
+        const price = apartment.price;
+
+        if (typeData[type]) {
+            typeData[type].count++;
+            typeData[type].cityCount[city] = (typeData[type].cityCount[city] || 0) + 1;
+            if (price > typeData[type].maxPrice) {
+                typeData[type].maxPrice = price;
+            }
+        }
+    });
+
+
+    const getTopCityAndRegion = (cityCount, apartments, type) => {
+        const topCity = Object.entries(cityCount).sort((a, b) => b[1] - a[1])[0]?.[0];
+        const region = apartments.find(a => a.address.city === topCity && a.type === type)?.address.region || null;
+        return { topCity, region };
+    };
+
+    const sale = typeData["דירה למכירה"];
+    const rent = typeData["דירה להשכרה"];
+
+    const saleCityRegion = getTopCityAndRegion(sale.cityCount, apartments, "דירה למכירה");
+    const rentCityRegion = getTopCityAndRegion(rent.cityCount, apartments, "דירה להשכרה");
+
+    let dominantType = null; // "only_sale" | "only_rent" | "sale" | "rent" | "equal"
+
+    if (sale.count > 0 && rent.count === 0) {
+        dominantType = "only_sale";
+    } else if (rent.count > 0 && sale.count === 0) {
+        dominantType = "only_rent";
+    } else if (sale.count > rent.count) {
+        dominantType = "sale";
+    } else if (rent.count > sale.count) {
+        dominantType = "rent";
+    } else if (sale.count === rent.count && sale.count > 0) {
+        dominantType = "equal";
+    }
+
+    return {
+        dominantType,
+        sale: {
+            count: sale.count,
+            topCity: saleCityRegion.topCity,
+            region: saleCityRegion.region,
+            maxPrice: sale.maxPrice
+        },
+        rent: {
+            count: rent.count,
+            topCity: rentCityRegion.topCity,
+            region: rentCityRegion.region,
+            maxPrice: rent.maxPrice
+        }
+    };
+};
+
+// Function to filter apartments based on user preferences (type, price, city, region)
+const getFilteredApartments = async (apartments, type, maxPrice, city, region, numResults) => {
+    const results = [];
+
+    // שלב 1: חיפוש לפי עיר + איזור + מחיר + סוג
+    const level1 = apartments.filter(ap =>
+        ap.type === type &&
+        ap.price <= maxPrice &&
+        ap.address.city === city &&
+        ap.address.region === region
+    );
+    results.push(...level1);
+
+    // אם יש מספיק, נחזיר
+    if (results.length >= numResults) return results.slice(0, numResults);
+
+    // שלב 2: חיפוש לפי איזור + מחיר + סוג (בלי עיר)
+    const level2 = apartments.filter(ap =>
+        ap.type === type &&
+        ap.price <= maxPrice &&
+        ap.address.region === region &&
+        !results.includes(ap)
+    );
+    results.push(...level2);
+
+    // אם יש מספיק, נחזיר
+    if (results.length >= numResults) return results.slice(0, numResults);
+
+    // שלב 3: חיפוש לפי איזור + סוג בלבד (בלי מחיר)
+    const level3 = apartments.filter(ap =>
+        ap.type === type &&
+        ap.address.region === region &&
+        !results.includes(ap)
+    );
+    results.push(...level3);
+
+    return results.slice(0, numResults);
+};
+
+// Function to get recommended apartments based on user preferences
+const getRecommendedApartments = async (userId) => {
+    // 1. שליפת נתוני המשתמש
+    const user = await User.findById(userId).populate('savedApartments').populate('recentlyViewedApartments');
+    if (!user || (!user.savedApartments && !user.recentlyViewedApartments)) {
+        return []; 
+    }
+    const apartments = [...user.savedApartments, ...user.recentlyViewedApartments];
+
+    // 2. קבלת העדפות המשתמש
+    const { dominantType, sale, rent } = getUserPreferences(apartments);
+
+    // 3. שליפת כל הדירות המאושרות
+    const allApartments = await Apartment.find({ status: "מאושר" });
+
+    // 4. הסרת דירות שצפה ושמר המשתמש
+    const filteredApartments = allApartments.filter(apartment =>
+        !user.savedApartments.some(saved => saved._id.toString() === apartment._id.toString()) &&
+        !user.recentlyViewedApartments.some(viewed => viewed._id.toString() === apartment._id.toString())
+    ).sort((a, b) => b.createdAt - a.createdAt);
+
+    // 5. שליפת דירות לפי ההעדפות של המשתמש
+    let recommendedApartments = [];
+
+    if (dominantType === "only_sale") {
+        recommendedApartments = await getFilteredApartments(
+            filteredApartments,
+            "דירה למכירה",
+            sale.maxPrice,
+            sale.topCity,
+            sale.region,
+            4
+        );
+    } else if (dominantType === "only_rent") {
+        recommendedApartments = await getFilteredApartments(
+            filteredApartments,
+            "דירה להשכרה",
+            rent.maxPrice,
+            rent.topCity,
+            rent.region,
+            4
+        );
+    } else if (dominantType === "sale" || dominantType === "rent") {
+        const primaryType = dominantType === "sale" ? "דירה למכירה" : "דירה להשכרה";
+        const secondaryType = dominantType === "sale" ? "דירה להשכרה" : "דירה למכירה";
+        const primaryPrefs = dominantType === "sale" ? sale : rent;
+        const secondaryPrefs = dominantType === "sale" ? rent : sale;
+
+        const primaryResults = await getFilteredApartments(
+            filteredApartments,
+            primaryType,
+            primaryPrefs.maxPrice,
+            primaryPrefs.topCity,
+            primaryPrefs.region,
+            3
+        );
+
+        const secondaryResults = await getFilteredApartments(
+            filteredApartments,
+            secondaryType,
+            secondaryPrefs.maxPrice,
+            secondaryPrefs.topCity,
+            secondaryPrefs.region,
+            1
+        );
+
+        recommendedApartments = [...primaryResults, ...secondaryResults];
+    } else if (dominantType === "equal") {
+        const saleResults = await getFilteredApartments(
+            filteredApartments,
+            "דירה למכירה",
+            sale.maxPrice,
+            sale.topCity,
+            sale.region,
+            2
+        );
+
+        const rentResults = await getFilteredApartments(
+            filteredApartments,
+            "דירה להשכרה",
+            rent.maxPrice,
+            rent.topCity,
+            rent.region,
+            2
+        );
+
+        recommendedApartments = [...saleResults, ...rentResults];
+    }
+
+    return recommendedApartments;
+};
+
+// Fetch recommended apartments for a user
+router.get('/recommended-apartments/:id', async (req, res) => {
+    const userId = req.params.id;
+
+    try {
+        const recommendedApartments = await getRecommendedApartments(userId);
+
+        if (recommendedApartments.length === 0) {
+            return res.status(404).send({ message: 'No relevant apartments found based on your preferences.' });
+        }
+
+        res.status(200).send({
+            message: 'Recommended apartments retrieved successfully.',
+            apartments: recommendedApartments
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ message: 'Server error. Please try again later.' });
     }
 });
 

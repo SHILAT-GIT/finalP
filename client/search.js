@@ -51,10 +51,13 @@ function displayApartmentSearch() {
             </div>
           `;
 
-        card.addEventListener("click", (e) => {
+        card.addEventListener("click", async (e) => {
           const isInsideSwiper = e.target.closest(".swiper");
           const isFavoriteIcon = e.target.closest(".favorite");
           if (!isInsideSwiper && !isFavoriteIcon) {
+            if (user && user.id)
+              await addToRecentlyViewed(apt._id);
+
             window.location.href = `apartmentDetails.html?id=${apt._id}`;
           }
         });

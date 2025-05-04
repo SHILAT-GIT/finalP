@@ -257,6 +257,35 @@ router.post("/resetPassword", async (req, res) => {
 });
 
 
+router.post('/view-apartment', async (req, res) => {
+    const { userId, apartmentId } = req.body;
 
+    try {
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).send({ message: 'User not found' });
+        }
+
+        // הסרה אם כבר קיימת
+        user.recentlyViewedApartments = user.recentlyViewedApartments.filter(
+            id => !id.equals(apartmentId)
+        );
+
+        // שמירה רק של 10 דירות
+        if (user.recentlyViewedApartments.length >= 10) {
+            user.recentlyViewedApartments.shift();
+        }
+
+        // הוספת הדירה החדשה לסוף
+        user.recentlyViewedApartments.push(apartmentId);
+
+        await user.save();
+
+        res.status(200).send({ message: 'Apartment successfully added to recently viewed.' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ message: 'Server error. Please try again later.' });
+    }
+});
 
 module.exports = router;

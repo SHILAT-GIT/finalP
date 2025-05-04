@@ -1,4 +1,4 @@
-function displayApartmentForRent() {
+ function displayApartmentForRent() {
   const container = document.getElementById("apartments-container");
 
   fetch("api/apartments/for-rent")
@@ -39,10 +39,13 @@ function displayApartmentForRent() {
           `;
 
         // קליק על כרטיס עובר לעמוד הדירה (אבל רק אם לא נלחץ על כפתור או תמונה בתוך הקרוסלה)
-        card.addEventListener("click", (e) => {
+        card.addEventListener("click",async (e) => {
           const isInsideSwiper = e.target.closest(".swiper");
           const isFavoriteIcon = e.target.closest(".favorite");
           if (!isInsideSwiper && !isFavoriteIcon) {
+            if (user && user.id)
+              await addToRecentlyViewed(apt._id);
+
             window.location.href = `apartmentDetails.html?id=${apt._id}`;
           }
         });
@@ -64,7 +67,7 @@ function displayApartmentForRent() {
 document.addEventListener("DOMContentLoaded", async () => {
   if (user && user.id)
     await fetchSavedApartments();
-  displayApartmentForRent();
+   displayApartmentForRent();
 });
 
 

@@ -36,11 +36,19 @@ function displaySavedApartments(apartments) {
         const apartmentElement = document.createElement('div');
         apartmentElement.classList.add('row', 'mt-4', 'border', 'rounded', 'p-3', 'shadow-sm', 'g-4', 'position-relative');
 
+        const isNew = (new Date() - new Date(apartment.createdAt)) / (1000 * 60 * 60 * 24) < 7;
+
         apartmentElement.innerHTML = `
             <h5 class="mb-0 position-absolute text-start" style="left: 20px;">
                 <span class="badge ${apartment.type === 'דירה למכירה' ? 'text-bg-success' : 'text-bg-primary'}">${apartment.type}</span>
             </h5>
     
+            ${isNew ?
+                `<h5 class="mb-0 position-absolute text-end" style="right: 20px;">
+                    <span style="color: white; background: rgb(0, 153, 255); font-weight: bold; padding: 4px 8px;border-radius: 12px; font-size: 1rem; z-index: 10;">חדש!</span>
+                </h5>`
+                : ''}
+
             <div class="col-md-4 text-center m-auto" >
                 <div id="carousel-${index}" class="carousel slide position-relative" data-bs-ride="carousel" 
                         style=" display: flex; align-items: center; justify-content: center; margin: auto;">
@@ -143,16 +151,16 @@ function sendInquiry(apartmentId) {
         .then(response => {
             if (response.status === 200) {
                 alert("הפנייה נשלחה בהצלחה!")
-            } else if(response.status === 402) {
+            } else if (response.status === 402) {
                 alert("שלחת כבר פניה לגבי דירה זו, אנו מטפלים בה וניצור עימך קשר בהקדם.");
             } else {
-            alert("אירעה שגיאה בשליחת הפניה, נסו שוב מאוחר יותר.");
-        }
+                alert("אירעה שגיאה בשליחת הפניה, נסו שוב מאוחר יותר.");
+            }
         })
-        .catch ((error) => {
-    console.error(error);
-    alert("אירעה שגיאה בשליחת הפניה, נסו שוב מאוחר יותר.")
-});
+        .catch((error) => {
+            console.error(error);
+            alert("אירעה שגיאה בשליחת הפניה, נסו שוב מאוחר יותר.")
+        });
 }
 
 // This code runs as soon as the page is fully loaded. 

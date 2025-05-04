@@ -10,7 +10,8 @@ const userSchema = new mongoose.Schema({
         enum: ['user', 'admin'],
         default: 'user'
     },
-    savedApartments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Apartment' }]
+    savedApartments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Apartment' }],
+    recentlyViewedApartments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Apartment' }]
 });
 
 module.exports = mongoose.model('User', userSchema);
