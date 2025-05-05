@@ -70,6 +70,7 @@ function addApartmentToSavedApartments(apartmentId) {
           icon.classList.remove("bi-bookmark");
           icon.classList.add("bi-bookmark-fill");
           alert("הדירה נשמרה בהצלחה!");
+          window.location.reload();
         } else {
           alert("אירעה שגיאה בשמירת הדירה.");
         }
