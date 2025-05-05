@@ -75,16 +75,3 @@ ul{
     right: -30px;
 }
 
-.new-badge {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    background: rgb(0, 153, 255);
-    color: white;
-    font-weight: bold;
-    padding: 4px 8px;
-    border-radius: 12px;
-    font-size: 1rem;
-    border: 1px solid white; 
-    z-index: 10;
-  }
