@@ -6,7 +6,7 @@ async function addToRecentlyViewed(apartmentId) {
     })
         .then(response => {
             if (response.status === 200) {
-                console.error("הדירה נוספה בהצלחה להסטוריית הצפיה של המשתמש!");
+                console.log("הדירה נוספה בהצלחה להסטוריית הצפיה של המשתמש!");
             } else {
                 console.error("אירעה שגיאה בהוספת הדירה להסטוריית הצפיה של המשתמש. נסה שוב מאוחר יותר");
             }
