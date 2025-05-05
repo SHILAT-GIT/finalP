@@ -231,7 +231,7 @@ const getUserPreferences = (apartments) => {
     apartments.forEach(apartment => {
         const type = apartment.type;
         const city = apartment.address.city;
-        const price = apartment.price;
+        const price = parseInt(String(apartment.price).replace(/,/g, ''));
 
         if (typeData[type]) {
             typeData[type].count++;
@@ -290,10 +290,12 @@ const getUserPreferences = (apartments) => {
 const getFilteredApartments = async (apartments, type, maxPrice, city, region, numResults) => {
     const results = [];
 
+    const cleanPrice = (price) => parseInt(String(price).replace(/,/g, ''));
+
     // שלב 1: חיפוש לפי עיר + איזור + מחיר + סוג
     const level1 = apartments.filter(ap =>
         ap.type === type &&
-        ap.price <= maxPrice &&
+        cleanPrice(ap.price) <= maxPrice &&
         ap.address.city === city &&
         ap.address.region === region
     );
@@ -305,7 +307,7 @@ const getFilteredApartments = async (apartments, type, maxPrice, city, region, n
     // שלב 2: חיפוש לפי איזור + מחיר + סוג (בלי עיר)
     const level2 = apartments.filter(ap =>
         ap.type === type &&
-        ap.price <= maxPrice &&
+        cleanPrice(ap.price) <= maxPrice &&
         ap.address.region === region &&
         !results.includes(ap)
     );
@@ -330,7 +332,7 @@ const getRecommendedApartments = async (userId) => {
     // 1. שליפת נתוני המשתמש
     const user = await User.findById(userId).populate('savedApartments').populate('recentlyViewedApartments');
     if (!user || (!user.savedApartments && !user.recentlyViewedApartments)) {
-        return []; 
+        return [];
     }
     const apartments = [...user.savedApartments, ...user.recentlyViewedApartments];
 
