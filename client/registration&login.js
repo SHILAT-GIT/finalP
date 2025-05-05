@@ -140,6 +140,8 @@ async function validateLogin() {
       updateAuthUI();
 
       alert("התחברת בהצלחה!");
+      window.location.reload();
+
       errorDiv.textContent = "";
       closeModal("loginModal");
       // אפשר להפנות לעמוד אחר אם רוצים:
