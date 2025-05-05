@@ -42,16 +42,15 @@ function displaySavedApartments(apartments) {
             <h5 class="mb-0 position-absolute text-start" style="left: 20px;">
                 <span class="badge ${apartment.type === 'דירה למכירה' ? 'text-bg-success' : 'text-bg-primary'}">${apartment.type}</span>
             </h5>
-    
-            ${isNew ?
-                `<h5 class="mb-0 position-absolute text-end" style="right: 20px;">
-                    <span style="color: white; background: rgb(0, 153, 255); font-weight: bold; padding: 4px 8px;border-radius: 12px; font-size: 1rem; z-index: 10;">חדש!</span>
-                </h5>`
-                : ''}
 
             <div class="col-md-4 text-center m-auto" >
                 <div id="carousel-${index}" class="carousel slide position-relative" data-bs-ride="carousel" 
                         style=" display: flex; align-items: center; justify-content: center; margin: auto;">
+
+                    ${isNew ?
+                        `<span style="position: absolute;top: 8px; right: 8px; color: white; background: rgb(0, 153, 255); font-weight: bold; padding: 4px 8px;border-radius: 12px; font-size: 1rem; border: 1px solid white; z-index: 10;">חדש!</span>`
+                        : ''}
+
                     <div class="carousel-inner" onclick='openImageModal(${JSON.stringify(apartment.images)})' style="cursor: pointer;">
                         ${apartment.images.map((img, i) => `
                             <div class="carousel-item ${i === 0 ? "active" : ""}">
