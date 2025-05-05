@@ -341,11 +341,13 @@ const getRecommendedApartments = async (userId) => {
 
     // 3. שליפת כל הדירות המאושרות
     const allApartments = await Apartment.find({ status: "מאושר" });
+    const userApartments = await Apartment.find({ owner: userId });
 
     // 4. הסרת דירות שצפה ושמר המשתמש
     const filteredApartments = allApartments.filter(apartment =>
         !user.savedApartments.some(saved => saved._id.toString() === apartment._id.toString()) &&
-        !user.recentlyViewedApartments.some(viewed => viewed._id.toString() === apartment._id.toString())
+        !user.recentlyViewedApartments.some(viewed => viewed._id.toString() === apartment._id.toString()) &&
+        !userApartments.some(ap => ap._id.toString() === apartment._id.toString())
     ).sort((a, b) => b.createdAt - a.createdAt);
 
     // 5. שליפת דירות לפי ההעדפות של המשתמש
